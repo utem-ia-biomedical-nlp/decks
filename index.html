@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decks · Jaime Jiménez Ruiz</title>
+<style>
+  :root { --bg:#f6f7f9; --fg:#1b2333; --muted:#5b6475; --card:#ffffff; --line:#dde1e8; --accent:#08519c; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#121722; --fg:#e8ecf3; --muted:#9aa4b5; --card:#1b2231; --line:#2c3547; --accent:#6baed6; color-scheme: dark; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px max(16px, env(safe-area-inset-right, 0px)) 56px max(16px, env(safe-area-inset-left, 0px)); }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; text-wrap: balance; }
+  .sub { color: var(--muted); margin: 0 0 36px; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  a.card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; color: inherit; text-decoration: none; }
+  a.card:hover { border-color: var(--accent); }
+  .tag { font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .t { font-size: 1.15rem; font-weight: 600; margin: 4px 0 6px; }
+  .d { color: var(--muted); margin: 0; }
+  footer { margin-top: 44px; color: var(--muted); font-size: .9rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Decks</h1>
+  <p class="sub">Presentaciones de Jaime Jiménez Ruiz · Ingeniería Civil en Ciencia de Datos, UTEM</p>
+  <ul>
+    <li>
+      <a class="card" href="historia-ia-lenguaje/">
+        <span class="tag">Noviembre 2026 · Métodos de Investigación Cualitativa, Psicología</span>
+        <div class="t">¿Cómo aprendió la IA a usar el lenguaje?</div>
+        <p class="d">Una breve historia, desde una neurona dibujada en papel hasta los asistentes que conversan y usan herramientas.</p>
+      </a>
+    </li>
+  </ul>
+  <footer>Dentro de cada deck se avanza con las flechas del teclado. · <a href="https://cl.linkedin.com/in/jaime-jimenez-ruiz">/in/jaime-jimenez-ruiz</a></footer>
+</main>
+</body>
+</html>
