@@ -28,7 +28,9 @@
     herramienta · strawberry con herramienta: pasos, código y respuesta verde (21)
     agente      · ventana de asistente en modo agente y ciclo pensar/actuar/observar (22)
     campus      · cierre «¡Gracias!»: persona line-art que camina por el Campus San Joaquín UC;
-                  muestras de color (pelo, abrigo, pantalón, zapatos), saluda al clic (24)
+                  frente al Centro de Innovación y el Cristo; ropero con íconos (pelo, abrigo,
+                  pantalón, zapatos) que resalta la prenda; saluda al clic; perrito que persigue
+                  a dos gatos hasta el banco y ladra al clic; estudiante en un plano lejano (24)
   Las slides 2 a 5 son 1943–1960 en cuatro pasos acumulativos (sin interacción;
   el esquema de LTP de la 3 se dibuja al cargar). La 6 y la 11 son divisores. La 23 (singularidad) usa la imagen de Favaro y Clark (2026), sin interacción. La 24 es el cierre «¡Gracias!» (campus). La 25 es la declaración de uso de IA (.slide.ia, con DL:LOGOS-IA), sin interacción.
   El PDF imprime un estado que se lee solo: lo que en pantalla se revela con
@@ -1872,22 +1874,41 @@ img, svg, canvas, video { max-width: 100%; max-height: 100%; }
 .slide.divisor .autor-in svg { width: 24px; height: 24px; }
 .slide.divisor .autor-fecha { grid-column: 1 / -1; margin-top: 0; }
 /* LART:CSS-INI · slide 24 «¡Gracias!»: escena line-art del Campus San Joaquín */
-.slide.gracias > h2 { margin-bottom: 6px; }
-.slide.gracias .gracias-bajada { font-size: var(--dl-text); color: var(--dl-body); margin: 0 0 26px; }
-.lart { display: grid; grid-template-columns: 1fr 330px; gap: 44px; align-items: center; flex: 1 1 auto; min-height: 0; }
+.slide.gracias > h2 { margin-bottom: 18px; }
+/* caja de entrada de un chat: el prompt que pidió esta slide */
+.gr-prompt { display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: end; background: var(--dl-table-alt); border: 2px solid var(--dl-rule); border-radius: 24px; padding: 16px 18px 16px 28px; }
+.gr-prompt p { margin: 0; font-size: 21px; line-height: 1.42; color: var(--dl-header); }
+.gr-enviar { width: 46px; height: 46px; display: block; }
+.gr-enviar circle { fill: var(--dl-era-chat); }
+.gr-enviar path { fill: none; stroke: var(--dl-surface); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.gr-chip { align-self: flex-start; margin: 10px 0 18px 6px; font-size: var(--dl-caption); color: var(--dl-muted); border: 1.5px solid var(--dl-rule); border-radius: 999px; padding: 4px 14px; background: var(--dl-surface); }
+.gr-chip a { color: var(--dl-info); font-weight: 700; text-decoration: none; }
+.lart { display: grid; grid-template-columns: 1fr 352px; gap: 40px; align-items: center; flex: 1 1 auto; min-height: 0; }
 .lart-tarjeta { --lart-paper: var(--dl-table-alt); background: var(--lart-paper); border: 2px solid var(--dl-rule); border-radius: 14px; overflow: hidden; line-height: 0; touch-action: none; }
 .lart-tarjeta svg { display: block; width: 100%; height: auto; }
 .lart-tarjeta svg .pp { fill: var(--lart-paper); }
 .lart-tarjeta svg text { font-family: var(--dl-font-body); }
-.lart-panel { display: flex; flex-direction: column; gap: 26px; }
-.lart-fila .et { display: block; font-size: var(--dl-dense); font-weight: 700; color: var(--dl-header); letter-spacing: .04em; margin-bottom: 10px; }
-.lart-fila .muestras { display: flex; flex-wrap: wrap; gap: 12px; }
+/* fila enfocada: halo suave sobre esa prenda en la persona */
+.lart-tarjeta[data-resalta="pelo"] .g-pelo, .lart-tarjeta[data-resalta="abrigo"] .g-abrigo,
+.lart-tarjeta[data-resalta="pantalon"] .g-pantalon, .lart-tarjeta[data-resalta="zapatos"] .g-zapatos {
+  filter: drop-shadow(0 0 1.1px var(--dl-accent)) drop-shadow(0 0 2.2px var(--dl-accent));
+}
+/* ropero: misma hoja y misma tinta que la escena */
+.lart-panel { display: flex; flex-direction: column; gap: 10px; background: var(--dl-table-alt); border: 2px solid var(--dl-rule); border-radius: 14px; padding: 16px 14px; }
+.lart-fila { border-radius: 10px; padding: 8px 8px 10px; transition: background .15s; }
+.lart-fila.activa { background: var(--dl-surface); }
+.lart-fila .et { display: block; font-family: var(--dl-font-title); font-style: italic; font-size: 25px; font-weight: 600; color: var(--dl-header); margin: 0 0 4px 4px; }
+.lart-fila .muestras { display: flex; flex-wrap: nowrap; gap: 4px; }
 .slide .interactivo .lart-fila button.mu, .slide .interactivo .lart-fila button.mu:hover,
 .slide .interactivo .lart-fila button.mu[aria-pressed="true"] {
-  width: 42px; height: 42px; padding: 0; border-radius: 50%; background: var(--c); border: 2px solid var(--dl-rule-strong);
-  box-shadow: 0 0 0 3px var(--dl-surface); transition: box-shadow .15s;
+  width: 50px; height: 50px; padding: 2px; border: 0; border-radius: 10px; background: transparent; box-shadow: none; transition: box-shadow .15s;
 }
-.slide .interactivo .lart-fila button.mu[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--dl-surface), 0 0 0 6px var(--dl-header); }
+.slide .interactivo .lart-fila button.mu:hover { box-shadow: inset 0 0 0 1.5px var(--dl-rule-strong); }
+.slide .interactivo .lart-fila button.mu[aria-pressed="true"] { background: var(--dl-surface); box-shadow: inset 0 0 0 2.5px var(--dl-header); }
+.lart-fila button.mu svg { width: 100%; height: 100%; display: block; }
+.lart-fila svg .pz { fill: var(--c); stroke: var(--dl-header); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.lart-fila svg .pp2 { fill: var(--dl-table-alt); stroke: var(--dl-header); stroke-width: 1.5; }
+.lart-fila svg .ln { fill: none; stroke: var(--dl-header); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; }
 @media print { .lart-tarjeta svg .lart-pista { display: none; } }
 /* LART:CSS-FIN */
 </style>
@@ -4002,14 +4023,18 @@ window.dlCamila = (function () {
 <!-- LART:INI · 24 · cierre: «¡Gracias!» con escena line-art del Campus San Joaquín -->
 <section class="slide contenido gracias" data-unidad="U05" data-pie="Anexo">
   <h2>¡Gracias!</h2>
-  <p class="gracias-bajada">Gracias por recibirme en San Joaquín y por las preguntas.</p>
+  <div class="gr-prompt" aria-label="Prompt escrito en la caja de entrada de un chat">
+    <p>Me gustaría agregar una slide antes de la declaración de uso de IA con una animación personalizada e interactiva en HTML usando esa skills. Pienso que podría ser un personaje sin genero al que le podamos cambiar el color de su pelo, el del abrigo, el de los pantalones y zapatos, y que su animación sea caminando por el campus san Joaquín de la UC</p>
+    <svg class="gr-enviar" viewBox="0 0 46 46" aria-hidden="true"><circle cx="23" cy="23" r="23"/><path d="M23 32 L23 14 M15.5 21.5 L23 14 L30.5 21.5"/></svg>
+  </div>
+  <span class="gr-chip">Usando skill: <a href="https://github.com/JDhruv14/line-art-animation">line-art-animation ↗</a></span>
   <div class="lart interactivo" data-widget="campus">
     <div class="lart-tarjeta"></div>
     <div class="lart-panel" aria-label="Colores de la persona">
-      <div class="lart-fila" data-parte="pelo"><span class="et">Pelo</span><div class="muestras"><button type="button" class="mu" data-c="--dl-seq-orange-3" style="--c:var(--dl-seq-orange-3)" aria-pressed="true" aria-label="Pelo: castaño" title="castaño"></button><button type="button" class="mu" data-c="--dl-header" style="--c:var(--dl-header)" aria-pressed="false" aria-label="Pelo: oscuro" title="oscuro"></button><button type="button" class="mu" data-c="--dl-seq-orange-1" style="--c:var(--dl-seq-orange-1)" aria-pressed="false" aria-label="Pelo: rubio" title="rubio"></button><button type="button" class="mu" data-c="--dl-seq-grey-2" style="--c:var(--dl-seq-grey-2)" aria-pressed="false" aria-label="Pelo: canoso" title="canoso"></button><button type="button" class="mu" data-c="--dl-era-agentes" style="--c:var(--dl-era-agentes)" aria-pressed="false" aria-label="Pelo: rojo" title="rojo"></button><button type="button" class="mu" data-c="--dl-u05" style="--c:var(--dl-u05)" aria-pressed="false" aria-label="Pelo: violeta" title="violeta"></button></div></div>
-      <div class="lart-fila" data-parte="abrigo"><span class="et">Abrigo</span><div class="muestras"><button type="button" class="mu" data-c="--dl-era-palabras" style="--c:var(--dl-era-palabras)" aria-pressed="true" aria-label="Abrigo: verde azulado" title="verde azulado"></button><button type="button" class="mu" data-c="--dl-era-chat" style="--c:var(--dl-era-chat)" aria-pressed="false" aria-label="Abrigo: naranjo" title="naranjo"></button><button type="button" class="mu" data-c="--dl-seq-blue-3" style="--c:var(--dl-seq-blue-3)" aria-pressed="false" aria-label="Abrigo: azul" title="azul"></button><button type="button" class="mu" data-c="--dl-seq-green-3" style="--c:var(--dl-seq-green-3)" aria-pressed="false" aria-label="Abrigo: verde" title="verde"></button><button type="button" class="mu" data-c="--dl-seq-purple-2" style="--c:var(--dl-seq-purple-2)" aria-pressed="false" aria-label="Abrigo: lila" title="lila"></button><button type="button" class="mu" data-c="--dl-seq-grey-1" style="--c:var(--dl-seq-grey-1)" aria-pressed="false" aria-label="Abrigo: gris claro" title="gris claro"></button></div></div>
-      <div class="lart-fila" data-parte="pantalon"><span class="et">Pantalón</span><div class="muestras"><button type="button" class="mu" data-c="--dl-header" style="--c:var(--dl-header)" aria-pressed="true" aria-label="Pantalón: azul marino" title="azul marino"></button><button type="button" class="mu" data-c="--dl-seq-grey-3" style="--c:var(--dl-seq-grey-3)" aria-pressed="false" aria-label="Pantalón: gris" title="gris"></button><button type="button" class="mu" data-c="--dl-seq-blue-2" style="--c:var(--dl-seq-blue-2)" aria-pressed="false" aria-label="Pantalón: celeste" title="celeste"></button><button type="button" class="mu" data-c="--dl-seq-orange-3" style="--c:var(--dl-seq-orange-3)" aria-pressed="false" aria-label="Pantalón: café" title="café"></button><button type="button" class="mu" data-c="--dl-seq-grey-1" style="--c:var(--dl-seq-grey-1)" aria-pressed="false" aria-label="Pantalón: gris claro" title="gris claro"></button></div></div>
-      <div class="lart-fila" data-parte="zapatos"><span class="et">Zapatos</span><div class="muestras"><button type="button" class="mu" data-c="--dl-surface" style="--c:var(--dl-surface)" aria-pressed="true" aria-label="Zapatos: blancos" title="blancos"></button><button type="button" class="mu" data-c="--dl-header" style="--c:var(--dl-header)" aria-pressed="false" aria-label="Zapatos: oscuros" title="oscuros"></button><button type="button" class="mu" data-c="--dl-era-agentes" style="--c:var(--dl-era-agentes)" aria-pressed="false" aria-label="Zapatos: rojos" title="rojos"></button><button type="button" class="mu" data-c="--dl-seq-orange-2" style="--c:var(--dl-seq-orange-2)" aria-pressed="false" aria-label="Zapatos: naranjos" title="naranjos"></button><button type="button" class="mu" data-c="--dl-seq-blue-2" style="--c:var(--dl-seq-blue-2)" aria-pressed="false" aria-label="Zapatos: celestes" title="celestes"></button></div></div>
+      <div class="lart-fila" data-parte="pelo"><span class="et">Pelo</span><div class="muestras"><button type="button" class="mu" data-c="--dl-seq-orange-3" style="--c:var(--dl-seq-orange-3)" aria-pressed="true" aria-label="Pelo: castaño" title="castaño"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="pp2" cx="20" cy="21" rx="6.2" ry="7.6"/><path class="pz" d="M8.6 28 Q7.6 8 20 7 Q32.4 8 31.4 28 Q28.6 30 26.2 28 L26.4 17.6 Q20 12.6 13.6 17.6 L13.8 28 Q11.4 30 8.6 28Z"/><path class="ln" d="M17 30.6 L17 35 M23 30.6 L23 35"/></svg></button><button type="button" class="mu" data-c="--dl-header" style="--c:var(--dl-header)" aria-pressed="false" aria-label="Pelo: oscuro" title="oscuro"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="pp2" cx="20" cy="21" rx="6.2" ry="7.6"/><path class="pz" d="M8.6 28 Q7.6 8 20 7 Q32.4 8 31.4 28 Q28.6 30 26.2 28 L26.4 17.6 Q20 12.6 13.6 17.6 L13.8 28 Q11.4 30 8.6 28Z"/><path class="ln" d="M17 30.6 L17 35 M23 30.6 L23 35"/></svg></button><button type="button" class="mu" data-c="--dl-seq-orange-1" style="--c:var(--dl-seq-orange-1)" aria-pressed="false" aria-label="Pelo: rubio" title="rubio"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="pp2" cx="20" cy="21" rx="6.2" ry="7.6"/><path class="pz" d="M8.6 28 Q7.6 8 20 7 Q32.4 8 31.4 28 Q28.6 30 26.2 28 L26.4 17.6 Q20 12.6 13.6 17.6 L13.8 28 Q11.4 30 8.6 28Z"/><path class="ln" d="M17 30.6 L17 35 M23 30.6 L23 35"/></svg></button><button type="button" class="mu" data-c="--dl-seq-grey-2" style="--c:var(--dl-seq-grey-2)" aria-pressed="false" aria-label="Pelo: canoso" title="canoso"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="pp2" cx="20" cy="21" rx="6.2" ry="7.6"/><path class="pz" d="M8.6 28 Q7.6 8 20 7 Q32.4 8 31.4 28 Q28.6 30 26.2 28 L26.4 17.6 Q20 12.6 13.6 17.6 L13.8 28 Q11.4 30 8.6 28Z"/><path class="ln" d="M17 30.6 L17 35 M23 30.6 L23 35"/></svg></button><button type="button" class="mu" data-c="--dl-era-agentes" style="--c:var(--dl-era-agentes)" aria-pressed="false" aria-label="Pelo: rojo" title="rojo"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="pp2" cx="20" cy="21" rx="6.2" ry="7.6"/><path class="pz" d="M8.6 28 Q7.6 8 20 7 Q32.4 8 31.4 28 Q28.6 30 26.2 28 L26.4 17.6 Q20 12.6 13.6 17.6 L13.8 28 Q11.4 30 8.6 28Z"/><path class="ln" d="M17 30.6 L17 35 M23 30.6 L23 35"/></svg></button><button type="button" class="mu" data-c="--dl-u05" style="--c:var(--dl-u05)" aria-pressed="false" aria-label="Pelo: violeta" title="violeta"><svg viewBox="0 0 40 40" aria-hidden="true"><ellipse class="pp2" cx="20" cy="21" rx="6.2" ry="7.6"/><path class="pz" d="M8.6 28 Q7.6 8 20 7 Q32.4 8 31.4 28 Q28.6 30 26.2 28 L26.4 17.6 Q20 12.6 13.6 17.6 L13.8 28 Q11.4 30 8.6 28Z"/><path class="ln" d="M17 30.6 L17 35 M23 30.6 L23 35"/></svg></button></div></div>
+      <div class="lart-fila" data-parte="abrigo"><span class="et">Abrigo</span><div class="muestras"><button type="button" class="mu" data-c="--dl-era-palabras" style="--c:var(--dl-era-palabras)" aria-pressed="true" aria-label="Abrigo: verde azulado" title="verde azulado"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M10.4 11 L5.6 27.6 L9.4 28.6 L12.4 19 Z M29.6 11 L34.4 27.6 L30.6 28.6 L27.6 19 Z"/><path class="pz" d="M14 8 Q20 11.4 26 8 L30 11 L31 34.4 L9 34.4 L10 11Z"/><path class="ln" d="M14 8 L20 16.4 L26 8 M20 16.4 L20 34.4 M22.6 21 l0.01 0 M22.6 26 l0.01 0 M12.6 26.4 L17 26.4"/></svg></button><button type="button" class="mu" data-c="--dl-era-chat" style="--c:var(--dl-era-chat)" aria-pressed="false" aria-label="Abrigo: naranjo" title="naranjo"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M10.4 11 L5.6 27.6 L9.4 28.6 L12.4 19 Z M29.6 11 L34.4 27.6 L30.6 28.6 L27.6 19 Z"/><path class="pz" d="M14 8 Q20 11.4 26 8 L30 11 L31 34.4 L9 34.4 L10 11Z"/><path class="ln" d="M14 8 L20 16.4 L26 8 M20 16.4 L20 34.4 M22.6 21 l0.01 0 M22.6 26 l0.01 0 M12.6 26.4 L17 26.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-blue-3" style="--c:var(--dl-seq-blue-3)" aria-pressed="false" aria-label="Abrigo: azul" title="azul"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M10.4 11 L5.6 27.6 L9.4 28.6 L12.4 19 Z M29.6 11 L34.4 27.6 L30.6 28.6 L27.6 19 Z"/><path class="pz" d="M14 8 Q20 11.4 26 8 L30 11 L31 34.4 L9 34.4 L10 11Z"/><path class="ln" d="M14 8 L20 16.4 L26 8 M20 16.4 L20 34.4 M22.6 21 l0.01 0 M22.6 26 l0.01 0 M12.6 26.4 L17 26.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-green-3" style="--c:var(--dl-seq-green-3)" aria-pressed="false" aria-label="Abrigo: verde" title="verde"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M10.4 11 L5.6 27.6 L9.4 28.6 L12.4 19 Z M29.6 11 L34.4 27.6 L30.6 28.6 L27.6 19 Z"/><path class="pz" d="M14 8 Q20 11.4 26 8 L30 11 L31 34.4 L9 34.4 L10 11Z"/><path class="ln" d="M14 8 L20 16.4 L26 8 M20 16.4 L20 34.4 M22.6 21 l0.01 0 M22.6 26 l0.01 0 M12.6 26.4 L17 26.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-purple-2" style="--c:var(--dl-seq-purple-2)" aria-pressed="false" aria-label="Abrigo: lila" title="lila"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M10.4 11 L5.6 27.6 L9.4 28.6 L12.4 19 Z M29.6 11 L34.4 27.6 L30.6 28.6 L27.6 19 Z"/><path class="pz" d="M14 8 Q20 11.4 26 8 L30 11 L31 34.4 L9 34.4 L10 11Z"/><path class="ln" d="M14 8 L20 16.4 L26 8 M20 16.4 L20 34.4 M22.6 21 l0.01 0 M22.6 26 l0.01 0 M12.6 26.4 L17 26.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-grey-1" style="--c:var(--dl-seq-grey-1)" aria-pressed="false" aria-label="Abrigo: gris claro" title="gris claro"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M10.4 11 L5.6 27.6 L9.4 28.6 L12.4 19 Z M29.6 11 L34.4 27.6 L30.6 28.6 L27.6 19 Z"/><path class="pz" d="M14 8 Q20 11.4 26 8 L30 11 L31 34.4 L9 34.4 L10 11Z"/><path class="ln" d="M14 8 L20 16.4 L26 8 M20 16.4 L20 34.4 M22.6 21 l0.01 0 M22.6 26 l0.01 0 M12.6 26.4 L17 26.4"/></svg></button></div></div>
+      <div class="lart-fila" data-parte="pantalon"><span class="et">Pantalón</span><div class="muestras"><button type="button" class="mu" data-c="--dl-header" style="--c:var(--dl-header)" aria-pressed="true" aria-label="Pantalón: azul marino" title="azul marino"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M12 6 L28 6 L30.2 35 L22.6 35 L20 15.4 L17.4 35 L9.8 35Z"/><path class="ln" d="M12.2 9.6 L27.8 9.6 M20 9.6 L20 15.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-grey-3" style="--c:var(--dl-seq-grey-3)" aria-pressed="false" aria-label="Pantalón: gris" title="gris"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M12 6 L28 6 L30.2 35 L22.6 35 L20 15.4 L17.4 35 L9.8 35Z"/><path class="ln" d="M12.2 9.6 L27.8 9.6 M20 9.6 L20 15.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-blue-2" style="--c:var(--dl-seq-blue-2)" aria-pressed="false" aria-label="Pantalón: celeste" title="celeste"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M12 6 L28 6 L30.2 35 L22.6 35 L20 15.4 L17.4 35 L9.8 35Z"/><path class="ln" d="M12.2 9.6 L27.8 9.6 M20 9.6 L20 15.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-orange-3" style="--c:var(--dl-seq-orange-3)" aria-pressed="false" aria-label="Pantalón: café" title="café"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M12 6 L28 6 L30.2 35 L22.6 35 L20 15.4 L17.4 35 L9.8 35Z"/><path class="ln" d="M12.2 9.6 L27.8 9.6 M20 9.6 L20 15.4"/></svg></button><button type="button" class="mu" data-c="--dl-seq-grey-1" style="--c:var(--dl-seq-grey-1)" aria-pressed="false" aria-label="Pantalón: gris claro" title="gris claro"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M12 6 L28 6 L30.2 35 L22.6 35 L20 15.4 L17.4 35 L9.8 35Z"/><path class="ln" d="M12.2 9.6 L27.8 9.6 M20 9.6 L20 15.4"/></svg></button></div></div>
+      <div class="lart-fila" data-parte="zapatos"><span class="et">Zapatos</span><div class="muestras"><button type="button" class="mu" data-c="--dl-surface" style="--c:var(--dl-surface)" aria-pressed="true" aria-label="Zapatos: blancos" title="blancos"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M5.6 28.6 Q5.4 20.4 11.6 19.4 L17.6 18.4 Q22 23.4 30 24.2 Q35 25 35 29.6 L35 31.4 L5.6 31.4Z"/><path class="ln" d="M5.8 28.4 L35 28.4 M16.6 21.4 l3 -1.4 M18.6 23 l3 -1.4 M20.8 24.4 l2.8 -1.2"/></svg></button><button type="button" class="mu" data-c="--dl-header" style="--c:var(--dl-header)" aria-pressed="false" aria-label="Zapatos: oscuros" title="oscuros"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M5.6 28.6 Q5.4 20.4 11.6 19.4 L17.6 18.4 Q22 23.4 30 24.2 Q35 25 35 29.6 L35 31.4 L5.6 31.4Z"/><path class="ln" d="M5.8 28.4 L35 28.4 M16.6 21.4 l3 -1.4 M18.6 23 l3 -1.4 M20.8 24.4 l2.8 -1.2"/></svg></button><button type="button" class="mu" data-c="--dl-era-agentes" style="--c:var(--dl-era-agentes)" aria-pressed="false" aria-label="Zapatos: rojos" title="rojos"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M5.6 28.6 Q5.4 20.4 11.6 19.4 L17.6 18.4 Q22 23.4 30 24.2 Q35 25 35 29.6 L35 31.4 L5.6 31.4Z"/><path class="ln" d="M5.8 28.4 L35 28.4 M16.6 21.4 l3 -1.4 M18.6 23 l3 -1.4 M20.8 24.4 l2.8 -1.2"/></svg></button><button type="button" class="mu" data-c="--dl-seq-orange-2" style="--c:var(--dl-seq-orange-2)" aria-pressed="false" aria-label="Zapatos: naranjos" title="naranjos"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M5.6 28.6 Q5.4 20.4 11.6 19.4 L17.6 18.4 Q22 23.4 30 24.2 Q35 25 35 29.6 L35 31.4 L5.6 31.4Z"/><path class="ln" d="M5.8 28.4 L35 28.4 M16.6 21.4 l3 -1.4 M18.6 23 l3 -1.4 M20.8 24.4 l2.8 -1.2"/></svg></button><button type="button" class="mu" data-c="--dl-seq-blue-2" style="--c:var(--dl-seq-blue-2)" aria-pressed="false" aria-label="Zapatos: celestes" title="celestes"><svg viewBox="0 0 40 40" aria-hidden="true"><path class="pz" d="M5.6 28.6 Q5.4 20.4 11.6 19.4 L17.6 18.4 Q22 23.4 30 24.2 Q35 25 35 29.6 L35 31.4 L5.6 31.4Z"/><path class="ln" d="M5.8 28.4 L35 28.4 M16.6 21.4 l3 -1.4 M18.6 23 l3 -1.4 M20.8 24.4 l2.8 -1.2"/></svg></button></div></div>
     </div>
   </div>
 <script>
@@ -4430,21 +4455,223 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
 // Escena «campus»: una persona camina por el Campus San Joaquín (UC).
 // Usa lib/ink, lib/gait y lib/motion (inline, ver encabezado del bundle).
 (window.dlWidgets = window.dlWidgets || {})["campus"] = function (raiz) {
-  var el = INK.el, pen = INK.pen, shape = INK.shape, paint = INK.paint, limb = INK.limb, solid = INK.solid,
+  var el = INK.el, pen = INK.pen, shape = INK.shape, blot = INK.blot, paint = INK.paint, limb = INK.limb, solid = INK.solid,
       shoe = INK.shoe, place = INK.place, f = INK.f, PEN = INK.PEN, PAPER = INK.PAPER;
   var gait = GAIT.gait;
   var spring = MOTION.spring, pendulum = MOTION.pendulum, pointerWind = MOTION.pointerWind,
       ease = MOTION.ease, clamp = MOTION.clamp, seeded = MOTION.seeded, lerp = MOTION.lerp;
 
-  var W = 960, H = 480, FAR = 330, GROUND = 438, SCALE = 1.3, SP = 0.9, DP = 0.5;
+  var W = 960, H = 480, FAR = 330, GROUND = 438, SCALE = 1.55, TOP = 92, PISO = 404, SP = 0.9, DP = 0.5;
   var tarjeta = raiz.querySelector(".lart-tarjeta");
-  var svg = el("svg", { viewBox: "0 0 " + W + " " + H, role: "img",
+  var svg = el("svg", { viewBox: "0 " + TOP + " " + W + " " + (H - TOP), role: "img",
     "aria-label": "Dibujo de línea: una persona camina por el Campus San Joaquín de la UC, frente al Centro de Innovación, las torres de vidrio y los árboles, con la cordillera al fondo." });
   svg.style.color = "var(--dl-header)";
   tarjeta.appendChild(svg);
   var defs = INK.inkDefs(svg, "lart");
   var scene = el("g", { filter: defs.filter }, svg);
-  var R = seeded(23);
+  var R = seeded(23), RS = seeded(5);
+  // ============================================================ extras: estudiante, perrito y gatos
+  // Se incrusta dentro del widget (build.js reemplaza el marcador), así que ve
+  // el, pen, shape, blot, paint, limb, solid, shoe, place, f, PEN, PAPER, gait,
+  // spring, ease, clamp, seeded, lerp.
+  var minJerk = MOTION.minJerk;
+  function oval(x, y, rx, ry) { return "M" + f(x - rx) + " " + f(y) + " a" + f(rx) + " " + f(ry) + " 0 1 0 " + f(2 * rx) + " 0 a" + f(rx) + " " + f(ry) + " 0 1 0 " + f(-2 * rx) + " 0Z"; }
+  function P2(p) { return f(p[0]) + " " + f(p[1]); }
+  function add(a, b) { return [a[0] + b[0], a[1] + b[1]]; }
+  function mezcla(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
+  function mezclaPose(A, B, t) { var o = {}; for (var k in A) o[k] = typeof A[k] === "number" ? A[k] + (B[k] - A[k]) * t : mezcla(A[k], B[k], t); return o; }
+  // contorno cerrado y blando: controles en los puntos, pasa por los puntos medios
+  function cerrada(P) {
+    var n = P.length, l = P[n - 1], d = "M" + P2(mezcla(l, P[0], 0.5));
+    for (var i = 0; i < n; i++) d += " Q" + P2(P[i]) + " " + P2(mezcla(P[i], P[(i + 1) % n], 0.5));
+    return d + "Z";
+  }
+  // marcha de cuatro patas con pies plantados: el pie de apoyo retrocede a la velocidad de avance
+  function cuadrupedo(o) {
+    var speed = o.S / (o.duty * o.T);
+    return {
+      speed: speed, T: o.T, lift: o.lift,
+      pie: function (i, fase, go, hx) {
+        var u = (((fase + o.offs[i]) % 1) + 1) % 1, x, y;
+        if (u < o.duty) { x = hx + o.S / 2 - (o.S * u) / o.duty; y = 0; }
+        else { var s = (u - o.duty) / (1 - o.duty); x = hx - o.S / 2 + o.S * minJerk(s); y = -o.lift * Math.sin(Math.PI * s); }
+        return [hx + (x - hx) * go, y * go];
+      },
+    };
+  }
+  function pierna(cad, P) { return "M" + P2(P[0]) + " C" + P2(P[1]) + " " + P2(P[2]) + " " + P2(P[3]); }
+  function patasDe(hip, pie, trasera) {
+    if (trasera) return [hip, add(hip, [1.4, 3.0]), add(pie, [-1.8, -2.6]), pie];
+    return [hip, add(mezcla(hip, pie, 0.33), [-0.5, 0]), add(mezcla(hip, pie, 0.66), [-0.5, 0]), pie];
+  }
+
+  // ------------------------------------------------------------ estudiante en un plano lejano
+  function crearEstudiante(parent) {
+    var g = el("g", {}, parent);
+    g.style.color = "var(--dl-seq-grey-2)";
+    var brazoL = limb(g, 3.4), piernas = [solid(limb(g, 4.0), "var(--dl-seq-blue-2)"), solid(limb(g, 4.0), "var(--dl-seq-blue-2)")];
+    var zap = [blot(g), blot(g)];
+    var torso = shape(g), mochila = paint(g, "var(--dl-seq-green-2)", PEN * 0.9), tira = pen(g, PEN * 0.7);
+    var cab = el("ellipse", { rx: 3.8, ry: 4.6, fill: PAPER, stroke: "currentColor", "stroke-width": PEN }, g);
+    var pelo2 = blot(g), brazoC = limb(g, 3.4);
+    var marcha = gait({ kind: "walk" }), K = 0.62, Y = 354;
+    var E = { x: 860, dir: -1, fase: 0.3, espera: 0, g: g, K: K, Y: Y };
+    E.step = function (dt, RS) {
+      if (E.espera > 0) { E.espera -= dt; g.style.display = "none"; if (E.espera <= 0) { E.x = W + 40; } return; }
+      g.style.display = "";
+      E.fase += dt / marcha.period;
+      E.x += E.dir * marcha.speed * K * dt;
+      if (E.x < -40) { E.espera = RS(4, 8); return; }
+      place(g, E.x, Y, E.dir, K);
+      var p = marcha.pose(E.fase), b = p.bob;
+      p.feet.forEach(function (fo, i) { piernas[i].draw([p.hip, fo.knee, fo.ankle], [0.3, 0.8]); shoe(zap[i], fo.ankle, fo.pitch); });
+      g.insertBefore(piernas[p.front].g, torso); g.insertBefore(zap[p.front], torso);
+      torso.setAttribute("d", "M35 " + f(43 + b) + " Q41 " + f(40 + b) + " 47 " + f(43 + b) + " L48 " + f(73 + b) + " L34 " + f(73 + b) + "Z");
+      mochila.setAttribute("d", "M35 " + f(45 + b) + " L28.6 " + f(45.6 + b) + " Q26.4 " + f(52 + b) + " 27.8 " + f(66 + b) + " L35 " + f(66 + b) + "Z");
+      tira.setAttribute("d", "M37 " + f(44 + b) + " Q40.5 " + f(51 + b) + " 38.4 " + f(60 + b));
+      cab.setAttribute("cx", 42.4); cab.setAttribute("cy", f(32 + b));
+      pelo2.setAttribute("d", "M38.4 " + f(31.4 + b) + " Q37.8 " + f(26 + b) + " 42.6 " + f(26 + b) + " Q47 " + f(26.2 + b) + " 46.4 " + f(30.4 + b) + " Q44 " + f(28.6 + b) + " 41 " + f(29.6 + b) + " Q39.4 " + f(30.2 + b) + " 38.4 " + f(31.4 + b) + "Z");
+      var sw = (p.feet[0].ankle[0] - 40) / (marcha.stride / 2);
+      var sh = [41, 45 + b];
+      [[brazoL, -sw * 0.28], [brazoC, sw * 0.24]].forEach(function (a) {
+        var e = [sh[0] + 15 * Math.sin(a[1]), sh[1] + 15 * Math.cos(a[1])];
+        a[0].draw([sh, e, [e[0] + 14 * Math.sin(a[1] + 0.15), e[1] + 14 * Math.cos(a[1] + 0.15)]], [0.2, 0.5]);
+      });
+    };
+    return E;
+  }
+
+  // ------------------------------------------------------------ perrito negro
+  var POSE_PERRO = {
+    corre: { Rb: [-10, -6.5], Rt: [-10.2, -11], St: [6, -11.6], Cf: [9.6, -8.4], Bf: [5, -6], Br: [-5, -6.4], H: [12.2, -15.4], N: [6.6, -10], T0: [-10, -10.4], FH: [6, -8], RH: [-7.4, -8], mira: 0 },
+    sienta: { Rb: [-8, -1.4], Rt: [-8.6, -7], St: [3, -14.6], Cf: [6, -11], Bf: [4, -6], Br: [-3, -1.4], H: [7, -20.6], N: [3.4, -13.4], T0: [-8.6, -2.6], FH: [4, -10], RH: [-5, -4], mira: -24 },
+  };
+  function crearPerro(parent) {
+    var K = 1.6;
+    var g = el("g", { style: "cursor:pointer" }, parent);
+    var tt = el("title", {}, g); tt.textContent = "Perrito: clic para que ladre";
+    el("rect", { x: -16, y: -27, width: 34, height: 29, fill: "transparent" }, g);
+    var lejos = pen(g, 1.7), cola = pen(g, 1.8);
+    var cuerpo = blot(g), cuello = pen(g, 5.4);
+    var collar = el("path", { fill: "none", "stroke-width": 1.5, "stroke-linecap": "round" }, g); collar.style.stroke = "var(--dl-era-agentes)";
+    var cabG = el("g", {}, g), cabeza = blot(cabG);
+    var lengua = el("path", {}, cabG); lengua.style.fill = "var(--dl-seq-orange-1)";
+    var ojo = el("circle", { cx: 1.4, cy: -0.9, r: 0.75 }, cabG); ojo.style.fill = "var(--lart-paper)";
+    var orejaG = el("g", {}, cabG), oreja = blot(orejaG);
+    oreja.setAttribute("d", "M0 0 Q-2.8 0.4 -3 4.8 Q-1.4 5.8 0.5 3.8 Q1.3 1.4 0 0Z");
+    var cerca = pen(g, 1.7), patas = blot(g);
+    var trote = cuadrupedo({ T: 0.4, duty: 0.55, S: 9.2, lift: 2.6, offs: [0, 0.5, 0.5, 0] });
+    var Dg = { speed: trote.speed, g: g, K: K, x: 0, dir: 1, fase: 0, go: 1, sit: 0, ladra: -1, colaS: spring(40, 5), orejaS: spring(50, 5), alegre: 0.3 };
+    Dg.dibujar = function (dt, t) {
+
+      g.setAttribute("transform", "translate(" + f(Dg.x) + " " + f(PISO) + ") scale(" + f(Dg.dir * K) + " " + f(K) + ")");
+      var s = ease(Dg.sit), P = mezclaPose(POSE_PERRO.corre, POSE_PERRO.sienta, s);
+      var pies = [0, 1, 2, 3].map(function (i) { return trote.pie(i, Dg.fase, Dg.go * (1 - s), (i < 2 ? P.FH[0] : P.RH[0]) + (i % 2 ? 0.9 : 0)); });
+      var bob = (pies[0][1] + pies[1][1] + pies[2][1] + pies[3][1]) * 0.18;
+      var B = function (p) { return [p[0], p[1] + bob * (1 - s)]; };
+      cuerpo.setAttribute("d", cerrada([B(P.Rb), B(P.Rt), B(P.St), B(P.Cf), B(P.Bf), B(P.Br)]));
+      var lad = Dg.ladra >= 0 ? Math.sin(Math.min(1, Dg.ladra / 0.18) * Math.PI) : 0;
+      var H = add(B(P.H), [0, -lad * 1.4]);
+      cuello.setAttribute("d", "M" + P2(B(P.N)) + " L" + P2(add(H, [-1.6, 1.2])));
+      collar.setAttribute("d", "M" + P2(mezcla(B(P.N), H, 0.35)) + " l1.2 3.4");
+      cabG.setAttribute("transform", "translate(" + P2(H) + ") rotate(" + f(P.mira - lad * 12) + ")");
+      cabeza.setAttribute("d", oval(0, 0, 3.4, 2.9) + " M1.4 -1.5 L6.2 -0.7 Q7.6 0.2 6.5 1.7 L1.4 2.3Z");
+      lengua.setAttribute("d", s > 0.5 || lad > 0.1 ? "M4.2 1.9 Q4.9 " + f(3.6 + lad) + " 5.8 2.0Z" : "");
+      var or = Dg.orejaS.step((1 - s) * Dg.go * (26 + Math.sin(Dg.fase * 4 * Math.PI) * 12) + lad * 30, dt);
+      orejaG.setAttribute("transform", "translate(-1.2 -2.2) rotate(" + f(or) + ")");
+      // piernas: cercanas delante del cuerpo, lejanas detrás
+      var piernaRun = function (i) { var trasera = i >= 2, hip = add(B(trasera ? P.RH : P.FH), [i % 2 ? 0.9 : 0, 0]); return patasDe(hip, add(pies[i], [0, 0]), trasera); };
+      var piernaSit = function (i) {
+        var dx = i % 2 ? 1.4 : 0;
+        if (i < 2) return [add(P.FH, [dx, 0]), add(P.FH, [dx + 0.1, 3.5]), add(P.FH, [dx + 0.2, 7]), [P.FH[0] + 0.6 + dx, 0]];
+        return [add(P.RH, [dx, 0]), [-7.6 + dx, -1.6], [-4.4 + dx, -0.4], [-1.4 + dx, 0]];
+      };
+      var L = [0, 1, 2, 3].map(function (i) { var a = piernaRun(i), b = piernaSit(i); return a.map(function (p, k) { return mezcla(p, b[k], s); }); });
+      lejos.setAttribute("d", pierna(0, L[1]) + " " + pierna(0, L[3]));
+      cerca.setAttribute("d", pierna(0, L[0]) + " " + pierna(0, L[2]));
+      patas.setAttribute("d", L.map(function (l) { return oval(l[3][0] + 0.5, l[3][1] - 0.5, 1.1, 0.75); }).join(" "));
+      // cola con resorte: menea rápido cuando está sentado mirando a los gatos
+      var amp = Dg.colaS.step(Dg.alegre, dt), w = Math.sin(t * 15) * amp;
+      var T0 = B(P.T0);
+      var T1r = add(T0, [-3, -3]), T2r = add(T0, [-5 + w * 1.2, -7 + Math.abs(w) * 0.6]);
+      var T1s = add(T0, [-4, 0.6]), T2s = add(T0, [-7.4, 1.6 - Math.abs(w) * 3.6]);
+      cola.setAttribute("d", "M" + P2(T0) + " Q" + P2(mezcla(T1r, T1s, s)) + " " + P2(mezcla(T2r, T2s, s)));
+    };
+    return Dg;
+  }
+
+  // ------------------------------------------------------------ gatos
+  var POSE_GATO = {
+    corre: { Rb: [-8, -4.6], Rt: [-8.2, -8.6], St: [5.4, -9.8], Cf: [8, -6.6], Bf: [4, -4.6], Br: [-5, -4.6], H: [9, -10], T0: [-8, -7.6], FH: [4.6, -5.6], RH: [-6, -6], ore: 0 },
+    sienta: { Rb: [-5.6, -1], Rt: [-4.6, -8.6], St: [1.4, -14], Cf: [3.8, -9], Bf: [3, -2.6], Br: [0, -0.6], H: [2.6, -15], T0: [-5, -1.2], FH: [2.2, -6], RH: [-3, -2], ore: 1 },
+  };
+  function crearGato(parent, color, manchas) {
+    var g = el("g", {}, parent);
+    var lejos = pen(g, 0.95);
+    var colaO = el("path", { fill: "none", stroke: "currentColor", "stroke-width": 2.6, "stroke-linecap": "round" }, g);
+    var colaI = el("path", { fill: "none", "stroke-width": 1.1, "stroke-linecap": "round" }, g); colaI.style.stroke = color;
+    var cuerpo = paint(g, color, 0.9);
+    var mancha = el("path", {}, g); mancha.style.fill = manchas || "none";
+    var cabG = el("g", {}, g);
+    var orejas = paint(cabG, color, 0.8);
+    var cab = paint(cabG, color, 0.9);
+    var cara = pen(cabG, 0.5);
+    var cerca = pen(g, 0.95), patas = shape(g, 0.6);
+    var salto = cuadrupedo({ T: 0.38, duty: 0.42, S: 8, lift: 3.2, offs: [0, 0.08, 0.5, 0.58] });
+    var C = { g: g, x: 0, y: 0, dir: 1, fase: 0, go: 1, sit: 0, modo: "corre", jt: 0, de: null, a: null, dur: 0.55, retraso: 0, flick: 0, sig: 2 };
+    C.speed = salto.speed; C.K = 1.35;
+    C.dibujar = function (dt, t) {
+      g.setAttribute("transform", "translate(" + f(C.x) + " " + f(PISO - C.y) + ") scale(" + f(C.dir * C.K) + " " + f(C.K) + ")");
+      var s = ease(C.sit), P = mezclaPose(POSE_GATO.corre, POSE_GATO.sienta, s);
+      var enAire = C.modo === "salta" || C.modo === "baja";
+      var pies = [0, 1, 2, 3].map(function (i) {
+        if (enAire) { var u = clamp(C.jt / C.dur, 0, 1), ext = Math.sin(Math.PI * u); return i < 2 ? [P.FH[0] + 4 + ext * 3 + i * 0.8, -3 - ext] : [P.RH[0] - 4 - ext * 3 + (i % 2) * 0.8, -2.5 - ext]; }
+        return salto.pie(i, C.fase, C.go * (1 - s), (i < 2 ? P.FH[0] : P.RH[0]) + (i % 2 ? 0.8 : 0));
+      });
+      var bob = enAire ? 0 : (pies[0][1] + pies[1][1] + pies[2][1] + pies[3][1]) * 0.15;
+      var B = function (p) { return [p[0], p[1] + bob * (1 - s)]; };
+      cuerpo.setAttribute("d", cerrada([B(P.Rb), B(P.Rt), B(P.St), B(P.Cf), B(P.Bf), B(P.Br)]));
+      if (manchas) { var m = mezcla(B(P.Rt), B(P.St), 0.45); mancha.setAttribute("d", "M" + f(m[0] - 2.6) + " " + f(m[1] + 0.6) + " Q" + f(m[0]) + " " + f(m[1] - 0.6) + " " + f(m[0] + 3) + " " + f(m[1] + 0.8) + " Q" + f(m[0] + 0.4) + " " + f(m[1] + 3.2) + " " + f(m[0] - 2.6) + " " + f(m[1] + 0.6) + "Z"); }
+      var H = B(P.H);
+      cabG.setAttribute("transform", "translate(" + P2(H) + ")");
+      cab.setAttribute("d", oval(0, 0, 3.1, 2.7));
+      orejas.setAttribute("d", "M-2.6 -1.2 L-2.4 -4.6 L-0.6 -2.4Z M0.6 -2.4 L2.4 -4.6 L2.7 -1.2Z");
+      cara.setAttribute("d", "M0.9 -0.5 l0.01 0.5 M-0.9 -0.5 l0.01 0.5 M2.4 0.8 l3 -0.4 M2.4 1.4 l3 0.5");
+      var L = [0, 1, 2, 3].map(function (i) {
+        var tr = i >= 2, hip = add(B(tr ? P.RH : P.FH), [i % 2 ? 0.8 : 0, 0]);
+        var a = patasDe(hip, pies[i], tr && !enAire);
+        var dx = i % 2 ? 1.3 : 0;
+        var b = i < 2 ? [add(P.FH, [dx, 0]), add(P.FH, [dx, 2]), add(P.FH, [dx + 0.2, 4]), [P.FH[0] + 0.4 + dx, 0]]
+                      : [add(P.RH, [dx, 0]), [-5 + dx, -1], [-3 + dx, -0.3], [-1 + dx, 0]];
+        return a.map(function (p, k) { return mezcla(p, b[k], s); });
+      });
+      lejos.setAttribute("d", pierna(0, L[1]) + " " + pierna(0, L[3]));
+      cerca.setAttribute("d", pierna(0, L[0]) + " " + pierna(0, L[2]));
+      patas.setAttribute("d", L.map(function (l) { return oval(l[3][0] + 0.4, l[3][1] - 0.5, 1.0, 0.6); }).join(" "));
+      // cola: arriba al correr; enroscada hacia adelante sentado, con un golpe de punta cada tanto
+      C.sig -= dt; if (C.sig < 0) { C.sig = 2 + ((C.x * 7.31) % 3 + 3) % 3; C.flick = 1; }
+      C.flick = Math.max(0, C.flick - dt * 1.5);
+      var fl = Math.sin(t * 13) * 2 * C.flick;
+      var T0 = B(P.T0);
+      var T1 = mezcla(add(T0, [-4, -2]), add(T0, [0.4, 2.2]), s), T2 = mezcla(add(T0, [-7, -7.4 + fl]), add(T0, [8.4, 1 - fl * 0.5]), s);
+      var dc = "M" + P2(T0) + " Q" + P2(T1) + " " + P2(T2);
+      colaO.setAttribute("d", dc); colaI.setAttribute("d", dc);
+    };
+    return C;
+  }
+
+  // ------------------------------------------------------------ el «¡guau!» escrito a mano
+  function crearGuau(parent) {
+    var g = el("g", { "pointer-events": "none" }, parent);
+    var tx = el("text", { "font-size": 18, fill: "currentColor", "text-anchor": "middle" }, g);
+    tx.style.fontFamily = "var(--dl-font-title)"; tx.style.fontStyle = "italic"; tx.style.fontWeight = "600";
+    tx.textContent = "¡guau!";
+    var rayas = pen(g, 0.7);
+    rayas.setAttribute("d", "M-14 6 l-4 -2 M-14 10 l-5 0 M-13 14 l-4 2");
+    g.setAttribute("opacity", "0");
+    return g;
+  }
+
 
   // ------------------------------------------------------------ cielo y cordillera
   var sky = el("g", {}, scene);
@@ -4464,13 +4691,13 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
   var faldeo = pen(sky, DP); faldeo.setAttribute("opacity", "0.3");
   faldeo.setAttribute("d", "M0 250 Q120 236 240 246 T480 240 T720 248 T960 238");
 
-  var nubes = [{ x: 120, y: 62, s: 1 }, { x: 610, y: 92, s: 0.75 }].map(function (n) {
+  var nubes = [{ x: 120, y: 128, s: 0.9 }, { x: 640, y: 120, s: 0.7 }].map(function (n) {
     var g = el("g", {}, sky), p = shape(g, DP + 0.2);
     p.setAttribute("d", "M-34 0 Q-36 -10 -24 -11 Q-20 -22 -6 -19 Q2 -28 14 -20 Q28 -22 28 -10 Q40 -8 36 0 Z");
     p.setAttribute("opacity", "0.7");
     n.g = g; return n;
   });
-  var aves = [0, 1, 2].map(function (i) { return { g: pen(sky, DP + 0.2), x: 300 + i * 26, y: 70 + i * 9, ph: i * 1.7 }; });
+  var aves = [0, 1, 2].map(function (i) { return { g: pen(sky, DP + 0.2), x: 300 + i * 26, y: 112 + i * 7, y0: 112 + i * 7, ph: i * 1.7, panico: 0, vx: 0, vy: 0 }; });
 
   // ------------------------------------------------------------ edificios (elevaciones)
   var edif = el("g", {}, scene);
@@ -4486,25 +4713,56 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
   linea(edif, DP, "M20 308 L250 308" + rep(19, function (i) { var x = 30 + i * 12; return " M" + x + " 293 L" + x + " 305 M" + x + " 311 L" + x + " 328"; }));
   caja(edif, 122, 312, 22, 18, DP);
 
-  // Centro de Innovación UC Anacleto Angelini: masa de hormigón con grandes vanos
+  // Centro de Innovación UC Anacleto Angelini (Aravena, 2014), según el frontis:
+  // monolito de hormigón a la vista con pocos vanos grandes y muy retranqueados.
+  // El bloque superior vuela hacia la izquierda; ranura vertical arriba a la
+  // derecha, ventanal horizontal al medio, ventana alta abajo a la derecha y una
+  // franja de acceso vidriada al centro de la planta baja.
   var CI = el("g", {}, edif);
-  caja(CI, 286, 112, 156, 218);
-  linea(CI, DP, rep(10, function (i) { var y = 112 + (i + 1) * 19.8; return " M286 " + f(y) + " L442 " + f(y); }), "0.35");
-  var CX = 286, CW = 156;
-  [[300, 130, 48, 42], [370, 152, 56, 24], [300, 194, 30, 42], [346, 190, 82, 60], [312, 262, 44, 30], [378, 268, 44, 24], [340, 302, 52, 28]]
-    .forEach(function (v) {
-      var x = v[0], y = v[1], w = v[2], h = v[3], d = 4.2;
-      caja(CI, x, y, w, h);
-      // fondo del vano, retranqueado: se lee la profundidad del muro
-      var fondo = pen(CI, DP);
-      fondo.setAttribute("d", "M" + (x + d) + " " + (y + h) + " L" + (x + d) + " " + (y + d) + " L" + (x + w) + " " + (y + d) +
-        " M" + x + " " + y + " L" + (x + d) + " " + (y + d));
-      var vid = "";
-      for (var yy = y + d + 8; yy < y + h - 1; yy += 9) vid += " M" + (x + d) + " " + f(yy) + " L" + (x + w) + " " + f(yy);
-      for (var xx = x + d + 10; xx < x + w - 2; xx += 11) vid += " M" + f(xx) + " " + (y + d) + " L" + f(xx) + " " + (y + h);
-      if (vid) linea(CI, DP, vid, "0.55");
+  var ciX0 = 296, ciX1 = 466, ciVuelo = 267, ciTop = 112, ciLosa = 189.5;
+  var ciMasa = shape(CI, SP);
+  ciMasa.setAttribute("d", "M" + ciX0 + " " + FAR + " L" + ciX0 + " " + ciLosa + " L" + ciVuelo + " " + ciLosa + " L" + ciVuelo + " " + ciTop +
+    " L" + ciX1 + " " + ciTop + " L" + ciX1 + " " + FAR + "Z");
+  // moldaje de tablas: líneas horizontales tenues y algunas juntas verticales
+  var mold = "";
+  for (var my2 = ciTop + 7; my2 < FAR - 2; my2 += 10.4) {
+    var xa = my2 < ciLosa ? ciVuelo : ciX0;
+    mold += " M" + f(xa + 1) + " " + f(my2) + " L" + f(ciX1 - 1) + " " + f(my2);
+  }
+  linea(CI, DP * 0.8, mold, "0.22");
+  linea(CI, DP, "M" + ciVuelo + " " + f(ciLosa - 3) + " L" + ciX0 + " " + f(ciLosa - 3) + " M385 239 L385 304 M441 189.5 L441 330 M298 189.5 L466 189.5 M298 239.5 L466 239.5", "0.5");
+  // vano retranqueado: el vidrio queda al fondo y se ven las caras del muro
+  function vano(x, y, w, h, d, vidrio, paso, oscuro) {
+    caja(CI, x, y, w, h);
+    var v = paint(CI, vidrio, DP);
+    v.setAttribute("d", "M" + f(x + d) + " " + f(y + d) + " L" + f(x + w) + " " + f(y + d) + " L" + f(x + w) + " " + f(y + h) + " L" + f(x + d) + " " + f(y + h) + "Z");
+    linea(CI, DP, "M" + x + " " + y + " L" + f(x + d) + " " + f(y + d), "0.9");
+    var som = "";
+    for (var sx = x + 2.4; sx < x + w - 0.5; sx += 2.6) som += " M" + f(sx) + " " + f(y + 0.6) + " L" + f(Math.min(sx + d * 0.6, x + w)) + " " + f(y + d - 0.4);
+    linea(CI, DP * 0.7, som, "0.45");
+    var mu = "";
+    for (var mx2 = x + d + paso; mx2 < x + w - 1; mx2 += paso) mu += " M" + f(mx2) + " " + f(y + d) + " L" + f(mx2) + " " + f(y + h);
+    for (var k = 1; k < 3; k++) { var yy2 = y + d + (h - d) * k / 3; mu += " M" + f(x + d) + " " + f(yy2) + " L" + f(x + w) + " " + f(yy2); }
+    var ml = linea(CI, DP * 0.8, mu, oscuro ? "0.7" : "0.55");
+    if (oscuro) ml.style.stroke = "var(--lart-paper)";
+  }
+  vano(406, 117, 26, 67, 5.2, "var(--dl-seq-blue-1)", 6.5);       // ranura vertical arriba a la derecha
+  vano(326.6, 191, 56.4, 48, 5.2, "var(--dl-seq-blue-1)", 7);     // ventanal horizontal al medio
+  vano(412, 241, 27, 62, 5.2, "var(--dl-seq-blue-1)", 6.8);       // ventana alta abajo a la derecha
+  vano(322, 305, 63, 25, 3.6, "var(--dl-seq-blue-3)", 7.6, true); // acceso vidriado
+  linea(CI, SP, "M" + (ciVuelo - 2) + " " + ciTop + " L" + (ciX1 + 2) + " " + ciTop);
+
+  // explanada frente al acceso y el grupo de esferas de hormigón
+  linea(edif, DP, "M262 346 L540 346 M276 338 L528 338", "0.45");
+  var esferas = el("g", {}, edif);
+  [[330, 3.0], [336.4, 2.6], [342, 3.2], [348, 2.4], [333.4, -1, 2.4], [339.4, -1, 2.6],
+   [394, 3.2], [400.6, 3.8], [408, 4.2], [416.4, 3.8], [424, 3.4], [431, 3.0], [437, 2.6],
+   [397.6, -1, 3.0], [404.6, -1, 3.6], [412.4, -1, 3.8], [420, -1, 3.4], [427.4, -1, 2.8], [408.6, -2, 3.2], [416.4, -2, 3.0]]
+    .forEach(function (e) {
+      var r = e.length === 3 ? e[2] : e[1], fila = e.length === 3 ? -e[1] : 0;
+      var cy = 345 - r - fila * 5.4;
+      el("circle", { cx: f(e[0]), cy: f(cy), r: f(r), fill: PAPER, stroke: "currentColor", "stroke-width": DP + 0.15 }, esferas);
     });
-  linea(CI, SP, "M" + (CX - 3) + " 112 L" + (CX + CW + 3) + " 112");
 
   // Torres Siamesas: un tronco de vidrio que se abre en dos hacia arriba
   var TS = el("g", {}, edif);
@@ -4531,6 +4789,20 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
   }
   linea(FA, DP, ven);
   linea(FA, SP, "M640 311 L932 311" + rep(13, function (i) { var x = 646 + i * 23.3; return " M" + f(x) + " 311 L" + f(x) + " 330 M" + f(x + 3.4) + " 311 L" + f(x + 3.4) + " 330"; }));
+
+  // Cristo del campus: figura de bronce estilizada, brazos abiertos en horizontal y
+  // túnica ancha, sobre un pedestal alto de hormigón con forma de pórtico hueco.
+  var cristo = el("g", {}, edif);
+  var ped = shape(cristo, SP);
+  ped.setAttribute("d", "M485.4 344 L485.4 293 L502.6 293 L502.6 344Z");
+  var hueco = shape(cristo, DP + 0.1);
+  hueco.setAttribute("d", "M488.6 341 L488.6 298 L497.4 298 L497.4 341Z");
+  linea(cristo, DP, "M493 298 L493 341 M485.4 296 L502.6 296", "0.6");
+  var bronce = paint(cristo, "var(--dl-seq-grey-3)", DP + 0.2);
+  bronce.setAttribute("d", "M478.6 268.2 Q486 266.6 490.4 267.4 L497.6 267.4 Q502 266.6 509.4 268.2 L509 270.6 Q502 270.8 498.6 273 L496.8 293 L491.2 293 L489.4 273 Q486 270.8 479 270.6Z");
+  var cabezaC = el("ellipse", { cx: 494, cy: 263.6, rx: 2.4, ry: 2.9 }, cristo); cabezaC.style.fill = "var(--dl-seq-grey-3)";
+  cabezaC.setAttribute("stroke", "currentColor"); cabezaC.setAttribute("stroke-width", DP + 0.2);
+  linea(cristo, DP * 0.7, "M494 274 L494 291 M491.6 278 Q494 280 496.4 278", "0.5");
 
   // ------------------------------------------------------------ árboles (se mecen con el viento)
   var arboles = [];
@@ -4571,34 +4843,101 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
     arboles.push(t);
     return t;
   }
-  arbol(262, 342, 252, 30, 40);
-  var jac = arbol(476, 346, 266, 46, 32, true);
+  var jac = arbol(214, 346, 268, 44, 31, true);
   arbol(618, 340, 244, 22, 44);
   arbol(946, 344, 256, 32, 38);
+
+  // estudiante con mochila en un plano más lejano (tinta más clara, escala menor)
+  var estudiante = crearEstudiante(el("g", {}, scene));
 
   // ------------------------------------------------------------ prado, bicicleta, banco, sendero
   var prado = el("g", {}, scene);
   var pasto = "";
   for (var g2 = 0; g2 < 70; g2++) {
     var gx = g2 < 52 ? R(10, 950) : R(560, 950), gy = g2 < 52 ? R(340, 402) : R(462, 472);
+    if (gx > 262 && gx < 540 && gy < 350) continue;
     pasto += " M" + f(gx - 1.6) + " " + f(gy) + " L" + f(gx) + " " + f(gy - 3) + " L" + f(gx + 1.4) + " " + f(gy);
   }
   linea(prado, DP, pasto, "0.7");
   // bicicleta estacionada
-  var bici = el("g", {}, prado);
+  var bici = el("g", { transform: "translate(155 404) scale(1.6) translate(-155 -404)" }, prado);
   [[134, 392], [176, 392]].forEach(function (w) { el("circle", { cx: w[0], cy: w[1], r: 12, fill: "none", stroke: "currentColor", "stroke-width": SP }, bici); el("circle", { cx: w[0], cy: w[1], r: 1.2, fill: "currentColor" }, bici); });
   linea(bici, SP, "M134 392 L150 392 L168 374 L146 374 L134 392 M150 392 L144 368 M140 368 L149 368 M168 374 L176 392 M166 364 L168 374 M162 364 Q166 362 171 365");
   linea(bici, DP, "M118 404 L196 404 M126 404 L126 384 M188 404 L188 384", "0.6");
   // banco
-  var banco = el("g", {}, prado);
+  var banco = el("g", { transform: "translate(743 404) scale(1.7) translate(-743 -404)" }, prado);
   var asiento = shape(banco, SP); asiento.setAttribute("d", "M700 388 L786 388 L786 392 L700 392Z");
   var resp = shape(banco, SP); resp.setAttribute("d", "M702 372 L784 372 L784 377 L702 377Z");
   linea(banco, SP, "M706 392 L706 404 M780 392 L780 404 M708 377 L708 388 M778 377 L778 388");
-  var mochila = paint(banco, "var(--dl-seq-orange-2)", SP); mochila.setAttribute("d", "M752 388 Q750 374 758 372 Q768 371 768 380 L768 388Z");
-  linea(banco, DP, "M754 381 L766 381");
   // sendero
   linea(prado, SP, "M0 408 L960 408 M0 452 L960 452");
   linea(prado, DP, rep(24, function (i) { var x = 18 + i * 40; return " M" + x + " 408 L" + (x + 4) + " 452"; }), "0.55");
+
+  // ------------------------------------------------------------ perrito negro y dos gatos
+  var capaAnimales = el("g", {}, scene);
+  var gatos = [crearGato(capaAnimales, "var(--lart-paper)", "var(--dl-seq-orange-2)"), crearGato(capaAnimales, "var(--dl-seq-grey-2)")];
+  var perro = crearPerro(capaAnimales);
+  var guau = crearGuau(capaAnimales);
+  var BANCO = { gatos: [{ x: 700.5, h: 27.2 }, { x: 744.7, h: 54.4 }], bajada: [842, 868], perro: 648 };
+  var DIR = { modo: "persecucion", t: 0, dur: 0 };
+  perro.g.addEventListener("pointerdown", function (e) {
+    e.stopPropagation();
+    if (perro.ladra < 0) perro.ladra = 0;
+    aves.forEach(function (av, i) { if (av.panico <= 0) { av.panico = 4; av.vx = 60 + i * 18; av.vy = -26 - i * 9; } });
+  });
+  perro.g.addEventListener("click", function (e) { e.stopPropagation(); });
+  function inicioPersecucion(xg) {
+    DIR.modo = "persecucion"; DIR.t = 0;
+    gatos.forEach(function (c, i) { c.x = xg - i * 32; c.y = 0; c.dir = 1; c.modo = "corre"; c.go = 1; c.sit = 0; c.fase = i * 0.37; c.retraso = 0; });
+    perro.x = xg - 110; perro.dir = 1; perro.go = 1; perro.sit = 0; perro.fase = 0; perro.ladra = -1; perro.alegre = 0.35;
+  }
+  function escenaPosados() {
+    DIR.modo = "posados"; DIR.t = 0; DIR.dur = 99;
+    gatos.forEach(function (c, i) { var tg = BANCO.gatos[i]; c.x = tg.x; c.y = tg.h; c.dir = -1; c.modo = "posado"; c.sit = 1; c.go = 0; c.retraso = 0; });
+    perro.x = BANCO.perro; perro.dir = 1; perro.go = 0; perro.sit = 1; perro.alegre = 1; perro.ladra = -1;
+  }
+  function director(dt, t) {
+    DIR.t += dt;
+    gatos.forEach(function (c, i) {
+      if (c.retraso > 0) { c.retraso -= dt; c.dibujar(dt, t); return; }
+      if (c.modo === "corre") {
+        c.go = Math.min(1, c.go + dt * 3);
+        c.fase += (dt / 0.38) * c.go; c.x += c.dir * c.speed * c.K * dt * c.go;
+        var tg = BANCO.gatos[i];
+        if (DIR.modo === "persecucion" && c.x >= tg.x - 26) { c.modo = "salta"; c.jt = 0; c.de = [c.x, 0]; c.a = [tg.x, tg.h]; c.dur = 0.5 + tg.h / 110; }
+        if (DIR.modo !== "persecucion" && c.x > W + 40) c.modo = "fuera";
+      } else if (c.modo === "salta" || c.modo === "baja") {
+        if (c.modo === "baja" && c.jt === 0) { c.dir = 1; c.sit = 0; }
+        c.jt += dt; var u = Math.min(1, c.jt / c.dur);
+        c.x = lerp(c.de[0], c.a[0], u); c.y = lerp(c.de[1], c.a[1], u) + 14 * Math.sin(Math.PI * u);
+        if (u >= 1) { c.y = c.a[1]; if (c.modo === "salta") { c.modo = "posado"; c.dir = -1; } else { c.modo = "corre"; c.dir = 1; c.go = 0.6; } }
+      } else if (c.modo === "posado") c.sit = Math.min(1, c.sit + dt * 3);
+      c.g.style.display = c.modo === "fuera" ? "none" : "";
+      c.dibujar(dt, t);
+    });
+    var d = perro;
+    if (DIR.modo === "persecucion") {
+      if (d.x < BANCO.perro - 15) d.go = Math.min(1, d.go + dt * 3);
+      else { d.go = Math.max(0, d.go - dt * 2.2); if (d.go === 0) d.sit = Math.min(1, d.sit + dt * 2.5); }
+      d.alegre = d.sit > 0.5 ? 1 : 0.35;
+    } else if (DIR.modo === "posados") d.alegre = 1;
+    else if (DIR.modo === "retirada" && DIR.t > 1.6) {
+      d.sit = Math.max(0, d.sit - dt * 3); if (d.sit === 0) d.go = Math.min(1, d.go + dt * 2.5); d.alegre = 0.35;
+    }
+    d.fase += (dt / 0.4) * d.go; d.x += d.dir * d.speed * d.K * dt * d.go;
+    d.g.style.display = d.x > W + 40 ? "none" : "";
+    var lad = 0;
+    if (d.ladra >= 0) { d.ladra += dt; lad = d.ladra < 0.12 ? d.ladra / 0.12 : d.ladra < 0.9 ? 1 : Math.max(0, 1 - (d.ladra - 0.9) / 0.4); if (d.ladra > 1.3) d.ladra = -1; }
+    guau.setAttribute("opacity", f(lad));
+    guau.setAttribute("transform", "translate(" + f(d.x + d.dir * 24) + " " + f(PISO - (d.sit > 0.5 ? 50 : 40) - lad * 2) + ") rotate(-8)");
+    d.dibujar(dt, t);
+    if (DIR.modo === "persecucion" && gatos[0].modo === "posado" && gatos[1].modo === "posado" && d.sit > 0.98) { DIR.modo = "posados"; DIR.t = 0; DIR.dur = RS(5, 7.5); }
+    else if (DIR.modo === "posados" && DIR.t > DIR.dur) {
+      DIR.modo = "retirada"; DIR.t = 0;
+      gatos.forEach(function (c, i) { c.retraso = i * 0.5; c.modo = "baja"; c.jt = 0; c.de = [c.x, c.y]; c.a = [BANCO.bajada[i], 0]; c.dur = 0.55; });
+    } else if (DIR.modo === "retirada" && gatos[0].modo === "fuera" && gatos[1].modo === "fuera" && d.x > W + 40) { DIR.modo = "pausa"; DIR.t = 0; DIR.dur = RS(3, 6); }
+    else if (DIR.modo === "pausa" && DIR.t > DIR.dur) inicioPersecucion(-40);
+  }
 
   // ------------------------------------------------------------ pétalos de jacarandá en el aire
   var petG = el("g", { "pointer-events": "none" }, scene);
@@ -4620,7 +4959,9 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
   var seam = pen(fig, PEN * 0.6), bolsillo = pen(fig, PEN * 0.5), cuello = pen(fig, PEN * 0.7);
   var head = el("ellipse", { rx: 3.9, ry: 4.8, fill: PAPER, stroke: "currentColor", "stroke-width": PEN }, fig);
   var hair = paint(fig, "var(--dl-seq-orange-3)", PEN * 0.8);
-  var nearArm = limb(fig, 3.8), nearHand = el("ellipse", { rx: 1.8, ry: 1.6, fill: PAPER, stroke: "currentColor", "stroke-width": PEN * 0.7 }, fig);
+  hair.classList.add("g-pelo"); coat.classList.add("g-abrigo"); farArm.g.classList.add("g-abrigo");
+  legs.forEach(function (l) { l.g.classList.add("g-pantalon"); }); shoes.forEach(function (z) { z.classList.add("g-zapatos"); });
+  var nearArm = limb(fig, 3.8); nearArm.g.classList.add("g-abrigo"); var nearHand = el("ellipse", { rx: 1.8, ry: 1.6, fill: PAPER, stroke: "currentColor", "stroke-width": PEN * 0.7 }, fig);
 
   var COLOR = { pelo: "", abrigo: "", pantalon: "", zapatos: "" };
   function fillOf(lb) { return lb.g.querySelector("path"); }
@@ -4718,11 +5059,17 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
       n.g.setAttribute("transform", "translate(" + f(n.x) + " " + n.y + ") scale(" + n.s + ")");
     });
     aves.forEach(function (av, i) {
-      av.x += 16 * dt; if (av.x > W + 30) av.x = -30;
-      var y = av.y + Math.sin(t * 0.6 + i) * 3, al = Math.sin(t * 7 + av.ph) * 2.2;
+      if (av.panico > 0) {
+        // se espantan con el ladrido y vuelven más tarde desde la izquierda
+        av.panico -= dt; av.x += av.vx * dt; av.y += av.vy * dt;
+        if (av.panico <= 0) { av.x = -30 - i * 22; av.y = av.y0; }
+      } else { av.x += 16 * dt; if (av.x > W + 30) av.x = -30; }
+      var y = av.y + Math.sin(t * 0.6 + i) * 3, al = Math.sin(t * (av.panico > 0 ? 24 : 7) + av.ph) * 2.2;
       av.g.setAttribute("d", "M" + f(av.x - 4.4) + " " + f(y - al) + " Q" + f(av.x - 2) + " " + f(y - 1) + " " + f(av.x) + " " + f(y + 0.8) +
         " Q" + f(av.x + 2) + " " + f(y - 1) + " " + f(av.x + 4.4) + " " + f(y - al));
     });
+    estudiante.step(dt, RS);
+    director(dt, t);
     // pétalos: caen del jacarandá; con viento caen más y vuelan más lejos
     var racha = Math.abs(wind.value);
     petalos.forEach(function (q) {
@@ -4759,6 +5106,15 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
       });
     });
   });
+  // pasar o enfocar una fila resalta esa prenda en la persona
+  var tarj = raiz.querySelector(".lart-tarjeta");
+  Array.prototype.forEach.call(raiz.querySelectorAll(".lart-fila"), function (fila) {
+    var parte = fila.getAttribute("data-parte");
+    function on() { tarj.setAttribute("data-resalta", parte); fila.classList.add("activa"); }
+    function off() { tarj.removeAttribute("data-resalta"); fila.classList.remove("activa"); }
+    fila.addEventListener("mouseenter", on); fila.addEventListener("mouseleave", off);
+    fila.addEventListener("focusin", on); fila.addEventListener("focusout", off);
+  });
   function coloresIniciales() {
     Array.prototype.forEach.call(raiz.querySelectorAll(".lart-fila"), function (fila) {
       var parte = fila.getAttribute("data-parte");
@@ -4768,7 +5124,12 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
   }
 
   // ------------------------------------------------------------ estados y bucle
-  function reiniciar(x0) {
+  function reiniciar(x0, modo) {
+    RS = seeded(5);
+    estudiante.x = modo === "fijo" ? 640 : 860; estudiante.espera = 0; estudiante.fase = 0.3;
+    if (modo === "fijo") escenaPosados(); else inicioPersecucion(150);
+    aves.forEach(function (av) { av.panico = 0; av.y = av.y0; });
+    guau.setAttribute("opacity", "0");
     S.t = 0; S.x = x0; S.phase = 0; S.waveT = -1;
     armSwing.forEach(function (sp) { sp.x = 0; sp.v = 0; });
     pelo.x = 0; pelo.v = 0; wind.value = 0.2;
@@ -4781,7 +5142,7 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
   }
   function paso(seg) { for (var i = 0, n = Math.round(seg * 60); i < n; i++) draw(1 / 60); }
   // Cuadro fijo (PDF y slide inactiva): a media zancada, frente al Centro de Innovación
-  function cuadroFijo() { reiniciar(232); paso(2.5); }
+  function cuadroFijo() { reiniciar(232, "fijo"); paso(2.5); }
 
   var slide = raiz.closest(".slide"), rafId = 0, prev = 0;
   function bucle(now) {
@@ -4789,7 +5150,7 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
     draw(dt);
     rafId = requestAnimationFrame(bucle);
   }
-  function arrancar() { parar(); reiniciar(250); paso(1 / 60); prev = 0; rafId = requestAnimationFrame(bucle); }
+  function arrancar() { parar(); reiniciar(250, "vivo"); paso(1 / 60); prev = 0; rafId = requestAnimationFrame(bucle); }
   function parar() { if (rafId) cancelAnimationFrame(rafId); rafId = 0; }
   var reducido = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -4807,7 +5168,7 @@ return { clamp, lerp, smooth, ease, minJerk, rnd, seeded, wobble, spring, pendul
   window.addEventListener("afterprint", function () { activa = false; revisar(); });
   raiz.addEventListener("click", function (e) { e.stopPropagation(); });
 
-  window.__lart = { S: S, paso: paso, reiniciar: reiniciar, cuadroFijo: cuadroFijo, parar: parar, arrancar: arrancar };
+  window.__lart = { DIR: DIR, perro: perro, gatos: gatos, estudiante: estudiante, aves: aves, S: S, paso: paso, reiniciar: reiniciar, cuadroFijo: cuadroFijo, parar: parar, arrancar: arrancar };
 };
 
 })();
