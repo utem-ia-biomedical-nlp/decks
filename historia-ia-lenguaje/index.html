@@ -1815,6 +1815,17 @@ img, svg, canvas, video { max-width: 100%; max-height: 100%; }
 .slide.divisor .autor-in .in-letra { fill: var(--dl-divider-bg); }
 .slide.divisor .autor-fecha { font-size: var(--dl-caption); color: var(--dl-on-dark-mute); letter-spacing: .08em; margin-top: 4px; }
 .slide.divisor .que-veremos { max-width: 86%; }
+
+/* Portada · autor en dos columnas (12 nov) */
+.slide.divisor .autor { display: grid; grid-template-columns: 1.25fr 1fr; column-gap: 72px; row-gap: 14px; margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--dl-on-dark-mute); width: 1465px; max-width: none; }
+.slide.divisor .autor-col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.slide.divisor .que-veremos b.autor-nombre { font-size: 28px; margin-bottom: 4px; }
+.slide.divisor .autor li { font-size: 20px; line-height: 1.38; }
+.slide.divisor .autor-cargos { margin-top: 0; display: flex; flex-direction: column; gap: 12px; }
+.slide.divisor .autor-mail { display: block; color: var(--dl-on-dark-mute); font-size: 19px; }
+.slide.divisor .autor-in { font-size: 20px; margin-top: 6px; }
+.slide.divisor .autor-in svg { width: 24px; height: 24px; }
+.slide.divisor .autor-fecha { grid-column: 1 / -1; margin-top: 0; }
 </style>
 </head>
 <body>
@@ -1843,17 +1854,21 @@ img, svg, canvas, video { max-width: 100%; max-height: 100%; }
       <text x="1000" y="108" text-anchor="middle" class="t">agente</text>
     </svg>
     <div class="autor">
-      <b class="autor-nombre">Jaime Jiménez Ruiz</b>
-      <ul class="autor-grados">
-        <li>Ingeniero Civil Biomédico, UdeC</li>
-        <li>Magíster en Ciencias de la Ingeniería, mención Ingeniería Eléctrica, UdeC</li>
-        <li>Magíster en Inteligencia Artificial, UC</li>
-      </ul>
-      <ul class="autor-cargos">
-        <li>CTO, HealthTracker Analytics · j.jimenez@healthtracker.ai</li>
-        <li>Docente de Deep Learning y NLP, Ingeniería Civil en Ciencia de Datos, UTEM · jjimenezru@utem.cl</li>
-      </ul>
-      <a class="autor-in" href="https://cl.linkedin.com/in/jaime-jimenez-ruiz"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="4" class="in-caja"/><rect x="5" y="9.5" width="3" height="9" class="in-letra"/><circle cx="6.5" cy="6.2" r="1.8" class="in-letra"/><path d="M10.5 9.5 H13.3 V10.9 C13.8 10 14.9 9.3 16.3 9.3 C18.6 9.3 19.4 10.8 19.4 13.2 V18.5 H16.4 V13.8 C16.4 12.7 16.1 12 15.1 12 C14 12 13.5 12.8 13.5 13.9 V18.5 H10.5 Z" class="in-letra"/></svg>/in/jaime-jimenez-ruiz</a>
+      <div class="autor-col">
+        <b class="autor-nombre">Jaime Jiménez Ruiz</b>
+        <ul class="autor-grados">
+          <li>Ingeniero Civil Biomédico, UdeC</li>
+          <li>Magíster en Ciencias de la Ingeniería, mención Ingeniería Eléctrica, UdeC</li>
+          <li>Magíster en Inteligencia Artificial, UC</li>
+        </ul>
+      </div>
+      <div class="autor-col">
+        <ul class="autor-cargos">
+          <li>CTO, HealthTracker Analytics<span class="autor-mail">j.jimenez@healthtracker.ai</span></li>
+          <li>Docente de Deep Learning y NLP<br>Ingeniería Civil en Ciencia de Datos, UTEM<span class="autor-mail">jjimenezru@utem.cl</span></li>
+        </ul>
+        <a class="autor-in" href="https://cl.linkedin.com/in/jaime-jimenez-ruiz"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><rect x="1" y="1" width="22" height="22" rx="4" class="in-caja"/><rect x="5" y="9.5" width="3" height="9" class="in-letra"/><circle cx="6.5" cy="6.2" r="1.8" class="in-letra"/><path d="M10.5 9.5 H13.3 V10.9 C13.8 10 14.9 9.3 16.3 9.3 C18.6 9.3 19.4 10.8 19.4 13.2 V18.5 H16.4 V13.8 C16.4 12.7 16.1 12 15.1 12 C14 12 13.5 12.8 13.5 13.9 V18.5 H10.5 Z" class="in-letra"/></svg>/in/jaime-jimenez-ruiz</a>
+      </div>
       <span class="autor-fecha">noviembre de 2026</span>
     </div>
   </div>
