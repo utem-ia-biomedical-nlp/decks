@@ -48,7 +48,7 @@
 -->
 <!-- 75 min reales: unos 65 de exposición con las demos, 7 para la pregunta
      final y 3 para el cierre. 25 slides = 3,0 min/slide, en el borde inferior de la banda [3,0 - 6,0]. -->
-<meta name="dl-bloque-min" content="75">
+<meta name="dl-bloque-min" content="78">
 <meta name="dl-visor" content="2">
 <style>
 @font-face{
@@ -2131,6 +2131,39 @@ img, svg, canvas, video { max-width: 100%; max-height: 100%; }
 .proc-zoom[hidden] { display: none; }
 .slide .proc-zoom img { max-width: 100%; max-height: 820px; object-fit: contain; border: 1.5px solid var(--dl-rule); border-radius: 10px; }
 @media print { .proc-capa { display: none !important; } }
+/* 14 · popup «Precios y ventana de contexto»: misma tarjeta modal que .proc-capa, sin zoom */
+.info-capa { position: absolute; inset: 0; z-index: 60; display: flex; align-items: center; justify-content: center; }
+.info-capa[hidden] { display: none; }
+.info-capa::before { content: ""; position: absolute; inset: 0; background: var(--dl-header); opacity: 0; transition: opacity .25s ease; }
+.info-capa.abierta::before { opacity: .55; }
+.info-tarjeta { position: relative; width: 1640px; background: var(--dl-surface); border-radius: 20px; padding: 36px 46px 34px; border: 2px solid var(--dl-rule);
+  transform: translateY(18px) scale(.94); opacity: 0; transition: transform .28s cubic-bezier(.2,.8,.2,1), opacity .22s ease; }
+.info-capa.abierta .info-tarjeta { transform: none; opacity: 1; }
+.info-cols { display: grid; grid-template-columns: 600px 1fr; gap: 56px; align-items: start; }
+.slide .info-tarjeta h3 { font-size: 32px; margin: 0 0 4px; }
+.slide .info-tarjeta .info-sub { font-size: 22px; color: var(--dl-muted); margin: 0 0 16px; }
+.slide .info-tarjeta table { width: 100%; border-collapse: collapse; font-size: 26px; }
+.slide .info-tarjeta th { text-align: left; font-size: 21px; font-weight: 700; color: var(--dl-header); background: none; padding: 6px 10px; border-bottom: 3px solid var(--dl-header); }
+.slide .info-tarjeta td { padding: 9px 10px; border-bottom: 1.5px solid var(--dl-rule); color: var(--dl-body); vertical-align: middle; }
+.slide .info-tarjeta td.n, .slide .info-tarjeta th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.slide .info-tarjeta td b { color: var(--dl-header); }
+.slide .info-tarjeta td.a { font-weight: 700; color: var(--dl-header); white-space: nowrap; }
+.info-barra { display: block; height: 14px; border-radius: 7px; background: var(--dl-era-palabras); min-width: 8px; }
+.info-barra.proy { background: color-mix(in srgb, var(--dl-era-palabras) 25%, var(--dl-surface)); border: 2px dashed var(--dl-era-palabras); }
+.slide .info-tarjeta td.b { width: 200px; }
+.slide .info-tarjeta td.m { white-space: nowrap; }
+.slide .info-tarjeta tr.proy td { font-style: italic; }
+.slide .info-tarjeta .info-nota { font-size: 22px; line-height: 1.4; color: var(--dl-body); margin: 16px 0 0; }
+.slide .info-tarjeta .fuente { margin: 20px 0 0; }
+.slide .interactivo button.info-cerrar, .slide .interactivo button.info-cerrar:hover {
+  position: absolute; top: 18px; right: 20px; width: 56px; height: 56px; padding: 0; border-radius: 50%; border: 2px solid var(--dl-rule-strong);
+  background: var(--dl-surface); color: var(--dl-header); font-size: 34px; line-height: 1; }
+.slide .interactivo button.info-cerrar:hover { background: var(--dl-table-alt); }
+.slide .interactivo button.info-abrir { display: inline-flex; align-items: center; gap: 12px; min-height: 56px; margin-top: 12px; padding: 8px 20px 8px 14px; font-size: 22px; }
+.info-abrir svg { width: 34px; height: 34px; flex: 0 0 auto; }
+.info-abrir svg circle { fill: none; stroke: currentColor; stroke-width: 2.2; }
+.info-abrir svg text { fill: currentColor; font-size: 21px; font-weight: 700; text-anchor: middle; }
+@media print { .info-capa { display: none !important; } .slide .interactivo button.info-abrir { display: none; } }
 /* deslizador sol → luna, arriba del ropero */
 .lart-luz { display: flex; align-items: center; gap: 12px; padding: 4px 8px 14px; margin: 0 0 2px; border-bottom: 1.5px solid var(--dl-rule); }
 .lart-luz svg { width: 30px; height: 30px; flex: 0 0 30px; display: block; }
@@ -2190,6 +2223,11 @@ img, svg, canvas, video { max-width: 100%; max-height: 100%; }
 .era-icono .aro { fill: none; stroke: var(--era-claro); stroke-width: .45; }
 .era-icono .l { fill: none; stroke: var(--era-claro); stroke-width: .6; stroke-linejoin: round; }
 .era-icono .r { fill: var(--era-claro); }
+/* divisor «De IA Generativa a IA Agéntica»: dos íconos, cada uno con el color de su era */
+.slide.divisor .era-icono.era-par { width: 790px; height: 351px; margin-top: -176px; right: 120px; }
+.slide.divisor.par[data-era] h2 { max-width: 820px; }
+.era-icono .e-chat { --era-claro: color-mix(in srgb, var(--dl-era-chat) 50%, var(--dl-surface)); }
+.era-icono .e-agentes { --era-claro: color-mix(in srgb, var(--dl-era-agentes) 50%, var(--dl-surface)); }
 
 /* P1.4 · portada: el hilo de seis íconos es la ilustración */
 .slide.tapa h2 { max-width: 1040px; }
@@ -3648,11 +3686,91 @@ window.dlCamila = (function () {
       <div class="card">
         <h3>Así nos cobran y nos limitan</h3>
         <p>Los servicios cobran y ponen cuotas por tokens leídos y generados. Una entrevista de una hora, transcrita, supera los diez mil tokens.</p>
+        <div class="interactivo"><button type="button" class="info-abrir" data-info="abrir" aria-haspopup="dialog"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14"/><text x="17" y="24.5">$</text></svg>Precios y ventana de contexto</button></div>
       </div>
     </div>
     <p class="tok-idioma">El mismo texto suele ocupar más tokens en español que en inglés (Petrov et al., 2023).</p>
     <p class="fuente" style="margin:12px 0 0">Cortes ilustrativos, al estilo de BPE; cada modelo tiene su propio tokenizador y corta distinto. <a href="https://arxiv.org/abs/1508.07909">Sennrich et al. (2016) ↗</a> · <a href="https://arxiv.org/abs/2305.15425">Petrov et al. (2023) ↗</a>, sobre la diferencia entre idiomas</p>
   </div>
+  <div class="info-capa interactivo" hidden>
+    <div class="info-tarjeta" role="dialog" aria-modal="true" aria-labelledby="info-tit">
+      <button type="button" class="info-cerrar" data-info="cerrar" aria-label="Cerrar">×</button>
+      <div class="info-cols">
+        <div>
+          <h3 id="info-tit">Cuánto cuesta un millón de tokens</h3>
+          <p class="info-sub">Modelos Claude, precio de lista en dólares, noviembre de 2026</p>
+          <table>
+            <thead><tr><th>Modelo</th><th class="n">Leídos</th><th class="n">Generados</th></tr></thead>
+            <tbody>
+              <tr><td><b>Fable 5.2</b></td><td class="n">US$ 8</td><td class="n">US$ 40</td></tr>
+              <tr><td><b>Opus 5.5</b></td><td class="n">US$ 4</td><td class="n">US$ 20</td></tr>
+              <tr><td><b>Sonnet 5.5</b></td><td class="n">US$ 2</td><td class="n">US$ 10</td></tr>
+              <tr><td><b>Haiku 5.5</b></td><td class="n">US$ 0,10</td><td class="n">US$ 0,50</td></tr>
+            </tbody>
+          </table>
+          <p class="info-nota">Leer la entrevista de diez mil tokens con Opus 5.5 cuesta unos 4 centavos de dólar.</p>
+        </div>
+        <div>
+          <h3>Ventana de contexto de modelos comerciales</h3>
+          <p class="info-sub">Cuántos tokens puede tener a la vista el modelo; barras en escala logarítmica</p>
+          <table>
+            <thead><tr><th>Año</th><th>Modelo</th><th class="n">Tokens</th><th></th></tr></thead>
+            <tbody>
+              <tr><td class="a">2020</td><td class="m">GPT-3</td><td class="n">2.048</td><td class="b"><span class="info-barra" style="width:5%"></span></td></tr>
+              <tr><td class="a">2022</td><td class="m">GPT-3.5</td><td class="n">4.096</td><td class="b"><span class="info-barra" style="width:10%"></span></td></tr>
+              <tr><td class="a">2023</td><td class="m">Claude 2 / GPT-4 Turbo</td><td class="n">100.000–128.000</td><td class="b"><span class="info-barra" style="width:34%"></span></td></tr>
+              <tr><td class="a">2026</td><td class="m">GPT-6 / Claude 5.5 / Gemini 4</td><td class="n">1.000.000</td><td class="b"><span class="info-barra" style="width:50%"></span></td></tr>
+              <tr class="proy"><td class="a">~2031</td><td class="m">Proyección</td><td class="n">1.000.000.000</td><td class="b"><span class="info-barra proy" style="width:100%"></span></td></tr>
+            </tbody>
+          </table>
+          <p class="info-nota">Como referencia: una persona dice unas 16.000 palabras al día. En 80 años son cerca de 470 millones de palabras, unos 700 millones de tokens.</p>
+        </div>
+      </div>
+      <p class="fuente"><a href="https://platform.claude.com/docs/en/about-claude/pricing">Precios de Anthropic ↗</a> · Ventanas según la ficha técnica de cada modelo; la de 2031 es una proyección del docente · <a href="https://doi.org/10.1126/science.1139940">Mehl et al. (2007) ↗</a>, palabras por día</p>
+    </div>
+  </div>
+<script>
+/* Popup «Precios y ventana de contexto». Mismo comportamiento que el de la
+   slide de cierre: Esc cierra, Tab gira dentro de la tarjeta, las teclas de
+   navegación no cambian de slide mientras está abierto y se cierra al cambiar
+   de slide. El PDF no lo imprime. */
+(function () {
+  var capa = document.querySelector(".info-capa");
+  if (!capa) return;
+  var sec = capa.closest(".slide"), tarjeta = capa.querySelector(".info-tarjeta"), boton = sec.querySelector('[data-info="abrir"]'), t = 0;
+  function abierto() { return !capa.hidden; }
+  function abrir() { clearTimeout(t); capa.hidden = false; void capa.offsetWidth; capa.classList.add("abierta"); capa.querySelector(".info-cerrar").focus({ preventScroll: true }); }
+  function cerrar(inmediato) {
+    if (!abierto()) return;
+    capa.classList.remove("abierta"); clearTimeout(t);
+    if (document.activeElement && capa.contains(document.activeElement)) document.activeElement.blur();
+    if (inmediato) capa.hidden = true; else t = setTimeout(function () { capa.hidden = true; }, 260);
+  }
+  boton.addEventListener("click", function (e) { e.stopPropagation(); abrir(); boton.blur(); });
+  capa.addEventListener("click", function (e) {
+    e.stopPropagation();
+    if (e.target.closest("a[href]")) return;
+    if (e.target.closest('[data-info="cerrar"]') || !e.target.closest(".info-tarjeta")) cerrar();
+  });
+  var NAV = ["ArrowRight", "ArrowLeft", "ArrowUp", "ArrowDown", " ", "PageDown", "PageUp", "Home", "End", "f", "F", "o", "O", "?", "Enter"];
+  window.addEventListener("keydown", function (e) {
+    if (!abierto()) return;
+    if (e.key === "Escape") { e.preventDefault(); e.stopPropagation(); cerrar(); return; }
+    if (e.key === "Tab") {
+      e.stopPropagation();
+      var f = Array.prototype.slice.call(tarjeta.querySelectorAll("button, a[href]")), i = f.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus({ preventScroll: true }); }
+      else if (!e.shiftKey && (i < 0 || i === f.length - 1)) { e.preventDefault(); f[0].focus({ preventScroll: true }); }
+      return;
+    }
+    if (NAV.indexOf(e.key) >= 0 || /^[0-9]$/.test(e.key)) {
+      e.stopPropagation();
+      if (!((e.key === " " || e.key === "Enter") && e.target.closest && e.target.closest(".info-tarjeta button, .info-tarjeta a"))) e.preventDefault();
+    }
+  }, true);
+  new MutationObserver(function () { cerrar(true); }).observe(sec, { attributes: true, attributeFilter: ["class"] });
+})();
+</script>
 <script>
 /* Widget `tokens`: tres frases cortadas a mano al estilo BPE (no hay un
    tokenizador real en el entorno offline). Cada palabra es una lista de
@@ -3884,6 +4002,16 @@ window.dlCamila = (function () {
 };
 
 </script>
+</section>
+
+<!-- divisor · de la IA generativa a la agéntica (agregado el 13 nov 2026) -->
+<section class="slide divisor par" data-unidad="U05" data-pie="Anexo" data-era="chat">
+  <h2>De IA Generativa a IA Agéntica</h2>
+  <svg class="era-icono era-par" viewBox="-40 -40 180 80" aria-hidden="true">
+    <g class="e-chat"><circle r="34" class="aro"/><path d="M-22,-16 Q-22,-22 -16,-22 L16,-22 Q22,-22 22,-16 L22,6 Q22,12 16,12 L-4,12 L-14,22 L-12,12 L-16,12 Q-22,12 -22,6 Z" class="l"/><circle cx="-9" cy="-5" r="2.3" class="r"/><circle cx="0" cy="-5" r="2.3" class="r"/><circle cx="9" cy="-5" r="2.3" class="r"/></g>
+    <g class="e-agentes"><path d="M41,0 L57,0 M53,-3.5 L57,0 L53,3.5" class="l" stroke-linecap="round"/></g>
+    <g class="e-agentes" transform="translate(100,0)"><circle r="34" class="aro"/><circle r="14" class="l" stroke-dasharray="4.4 3"/><circle r="6" class="l"/></g>
+  </svg>
 </section>
 
 <!-- 16 · widget · línea de tiempo 1943→2026 a escala real, con franja ampliada 2012–2026 · PROPUESTA: color por etapa e imagen en el detalle -->
