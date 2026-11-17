@@ -2179,6 +2179,10 @@ img, svg, canvas, video { max-width: 100%; max-height: 100%; }
 .slide .interactivo button.info-abrir { display: inline-flex; align-items: center; gap: 12px; min-height: 56px; margin-top: 12px; padding: 8px 20px 8px 14px; font-size: 22px; }
 .info-abrir svg { width: 34px; height: 34px; flex: 0 0 auto; }
 .info-abrir svg circle { fill: none; stroke: currentColor; stroke-width: 2.2; }
+.info-abrir svg rect, .info-abrir svg path { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.slide .interactivo .aten-botones button.info-abrir { margin-top: 0; }
+.info-tarjeta.angosta { width: 860px; }
+.info-tarjeta.media { width: 1180px; }
 .info-abrir svg text { fill: currentColor; font-size: 21px; font-weight: 700; text-anchor: middle; }
 @media print { .info-capa { display: none !important; } .slide .interactivo button.info-abrir { display: none; } }
 /* deslizador sol → luna, arriba del ropero */
@@ -3703,57 +3707,37 @@ window.dlCamila = (function () {
       <div class="card">
         <h3>Así nos cobran y nos limitan</h3>
         <p>Los servicios cobran y ponen cuotas por tokens leídos y generados. Una entrevista de una hora, transcrita, supera los diez mil tokens.</p>
-        <div class="interactivo"><button type="button" class="info-abrir" data-info="abrir" aria-haspopup="dialog"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14"/><text x="17" y="24.5">$</text></svg>Precios y ventana de contexto</button></div>
+        <div class="interactivo"><button type="button" class="info-abrir" data-info="abrir" aria-haspopup="dialog"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="14"/><text x="17" y="24.5">$</text></svg>Precios</button></div>
       </div>
     </div>
     <p class="tok-idioma">El mismo texto suele ocupar más tokens en español que en inglés (Petrov et al., 2023).</p>
     <p class="fuente" style="margin:12px 0 0">Cortes ilustrativos, al estilo de BPE; cada modelo tiene su propio tokenizador y corta distinto. <a href="https://arxiv.org/abs/1508.07909">Sennrich et al. (2016) ↗</a> · <a href="https://arxiv.org/abs/2305.15425">Petrov et al. (2023) ↗</a>, sobre la diferencia entre idiomas</p>
   </div>
   <div class="info-capa interactivo" hidden>
-    <div class="info-tarjeta" role="dialog" aria-modal="true" aria-labelledby="info-tit">
+    <div class="info-tarjeta angosta" role="dialog" aria-modal="true" aria-labelledby="info-tit-precios">
       <button type="button" class="info-cerrar" data-info="cerrar" aria-label="Cerrar">×</button>
-      <div class="info-cols">
-        <div>
-          <h3 id="info-tit">Cuánto cuesta un millón de tokens</h3>
-          <p class="info-sub">Modelos Claude, precio de lista en dólares, noviembre de 2026</p>
-          <table>
-            <thead><tr><th>Modelo</th><th class="n">Leídos</th><th class="n">Generados</th></tr></thead>
-            <tbody>
-              <tr><td><b>Fable 5.2</b></td><td class="n">US$ 8</td><td class="n">US$ 40</td></tr>
-              <tr><td><b>Opus 5.5</b></td><td class="n">US$ 4</td><td class="n">US$ 20</td></tr>
-              <tr><td><b>Sonnet 5.5</b></td><td class="n">US$ 2</td><td class="n">US$ 10</td></tr>
-              <tr><td><b>Haiku 5.5</b></td><td class="n">US$ 0,10</td><td class="n">US$ 0,50</td></tr>
-            </tbody>
-          </table>
-          <p class="info-nota">Leer la entrevista de diez mil tokens con Opus 5.5 cuesta unos 4 centavos de dólar.</p>
-        </div>
-        <div>
-          <h3>Ventana de contexto de modelos comerciales</h3>
-          <p class="info-sub">Cuántos tokens puede tener a la vista el modelo; barras en escala logarítmica</p>
-          <table>
-            <thead><tr><th>Año</th><th>Modelo</th><th class="n">Tokens</th><th></th></tr></thead>
-            <tbody>
-              <tr><td class="a">2020</td><td class="m">GPT-3</td><td class="n">2.048</td><td class="b"><span class="info-barra" style="width:5%"></span></td></tr>
-              <tr><td class="a">2022</td><td class="m">GPT-3.5</td><td class="n">4.096</td><td class="b"><span class="info-barra" style="width:10%"></span></td></tr>
-              <tr><td class="a">2023</td><td class="m">Claude 2 / GPT-4 Turbo</td><td class="n">100.000–128.000</td><td class="b"><span class="info-barra" style="width:34%"></span></td></tr>
-              <tr><td class="a">2026</td><td class="m">GPT-6 / Claude 5.5 / Gemini 4</td><td class="n">1.000.000</td><td class="b"><span class="info-barra" style="width:50%"></span></td></tr>
-              <tr class="proy"><td class="a">~2031</td><td class="m">Proyección</td><td class="n">1.000.000.000</td><td class="b"><span class="info-barra proy" style="width:100%"></span></td></tr>
-            </tbody>
-          </table>
-          <p class="info-nota">Como referencia: una persona dice unas 16.000 palabras al día. En 80 años son cerca de 470 millones de palabras, unos 700 millones de tokens.</p>
-        </div>
-      </div>
-      <p class="fuente"><a href="https://platform.claude.com/docs/en/about-claude/pricing">Precios de Anthropic ↗</a> · Ventanas según la ficha técnica de cada modelo; la de 2031 es una proyección del docente · <a href="https://doi.org/10.1126/science.1139940">Mehl et al. (2007) ↗</a>, palabras por día</p>
+      <h3 id="info-tit-precios">Cuánto cuesta un millón de tokens</h3>
+      <p class="info-sub">Modelos Claude, precio de lista en dólares, noviembre de 2026</p>
+      <table>
+        <thead><tr><th>Modelo</th><th class="n">Leídos</th><th class="n">Generados</th></tr></thead>
+        <tbody>
+          <tr><td><b>Fable 5.2</b></td><td class="n">US$ 8</td><td class="n">US$ 40</td></tr>
+          <tr><td><b>Opus 5.5</b></td><td class="n">US$ 4</td><td class="n">US$ 20</td></tr>
+          <tr><td><b>Sonnet 5.5</b></td><td class="n">US$ 2</td><td class="n">US$ 10</td></tr>
+          <tr><td><b>Haiku 5.5</b></td><td class="n">US$ 0,10</td><td class="n">US$ 0,50</td></tr>
+        </tbody>
+      </table>
+      <p class="info-nota">Leer la entrevista de diez mil tokens con Opus 5.5 cuesta unos 4 centavos de dólar.</p>
+      <p class="fuente"><a href="https://platform.claude.com/docs/en/about-claude/pricing">Precios de Anthropic ↗</a></p>
     </div>
   </div>
 <script>
-/* Popup «Precios y ventana de contexto». Mismo comportamiento que el de la
+/* Popups de información (precios en la slide de tokens, ventana de contexto en la de atención). Mismo comportamiento que el de la
    slide de cierre: Esc cierra, Tab gira dentro de la tarjeta, las teclas de
    navegación no cambian de slide mientras está abierto y se cierra al cambiar
    de slide. El PDF no lo imprime. */
 (function () {
-  var capa = document.querySelector(".info-capa");
-  if (!capa) return;
+ function montar(capa) {
   var sec = capa.closest(".slide"), tarjeta = capa.querySelector(".info-tarjeta"), boton = sec.querySelector('[data-info="abrir"]'), t = 0;
   function abierto() { return !capa.hidden; }
   function abrir() { clearTimeout(t); capa.hidden = false; void capa.offsetWidth; capa.classList.add("abierta"); capa.querySelector(".info-cerrar").focus({ preventScroll: true }); }
@@ -3786,6 +3770,9 @@ window.dlCamila = (function () {
     }
   }, true);
   new MutationObserver(function () { cerrar(true); }).observe(sec, { attributes: true, attributeFilter: ["class"] });
+ }
+ function todos() { Array.prototype.forEach.call(document.querySelectorAll(".info-capa"), montar); }
+ if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", todos); else todos();
 })();
 </script>
 <script>
@@ -3846,6 +3833,7 @@ window.dlCamila = (function () {
       <div class="aten-lectura" data-aten="lectura"></div>
       <div class="aten-botones">
         <button type="button" data-aten="cambiar">Cambiar la última palabra: enferma ↔ cancelada</button>
+        <button type="button" class="info-abrir" data-info="abrir" aria-haspopup="dialog"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="4" y="8" width="26" height="18" rx="3"/><path d="M10 14 L10 20 M15 14 L15 20 M20 14 L20 20"/></svg>Ventana de contexto</button>
       </div>
       <p class="fuente" style="margin:0">Pesos ilustrativos, escritos a mano; en un modelo real se aprenden.</p>
     </div>
@@ -3860,6 +3848,25 @@ window.dlCamila = (function () {
         <div class="cuando">2017 · Vaswani et al., Google</div>
         <p>Solo atención: todas las palabras se miran a la vez y se entrena en paralelo con muchísimo texto. <a href="https://arxiv.org/abs/1706.03762">Vaswani et al. (2017) ↗</a></p>
       </div>
+    </div>
+  </div>
+  <div class="info-capa interactivo" hidden>
+    <div class="info-tarjeta media" role="dialog" aria-modal="true" aria-labelledby="info-tit-contexto">
+      <button type="button" class="info-cerrar" data-info="cerrar" aria-label="Cerrar">×</button>
+      <h3 id="info-tit-contexto">Ventana de contexto de modelos comerciales</h3>
+      <p class="info-sub">Cuántos tokens puede tener a la vista el modelo; barras en escala logarítmica</p>
+      <table>
+        <thead><tr><th>Año</th><th>Modelo</th><th class="n">Tokens</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="a">2020</td><td class="m">GPT-3</td><td class="n">2.048</td><td class="b"><span class="info-barra" style="width:5%"></span></td></tr>
+          <tr><td class="a">2022</td><td class="m">GPT-3.5</td><td class="n">4.096</td><td class="b"><span class="info-barra" style="width:10%"></span></td></tr>
+          <tr><td class="a">2023</td><td class="m">Claude 2 / GPT-4 Turbo</td><td class="n">100.000–128.000</td><td class="b"><span class="info-barra" style="width:34%"></span></td></tr>
+          <tr><td class="a">2026</td><td class="m">GPT-6 / Claude 5.5 / Gemini 4</td><td class="n">1.000.000</td><td class="b"><span class="info-barra" style="width:50%"></span></td></tr>
+          <tr class="proy"><td class="a">~2031</td><td class="m">Proyección</td><td class="n">1.000.000.000</td><td class="b"><span class="info-barra proy" style="width:100%"></span></td></tr>
+        </tbody>
+      </table>
+      <p class="info-nota">Como referencia: una persona dice unas 16.000 palabras al día. En 80 años son cerca de 470 millones de palabras, unos 700 millones de tokens.</p>
+      <p class="fuente">Ventanas según la ficha técnica de cada modelo; la de 2031 es una proyección del docente · <a href="https://doi.org/10.1126/science.1139940">Mehl et al. (2007) ↗</a>, palabras por día</p>
     </div>
   </div>
 <script>
